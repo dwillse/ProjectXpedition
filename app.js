@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
-const connectionRoutes = require('./routes/connectionRoutes');
+//const connectionRoutes = require('./routes/connectionRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 // create app
@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.use('/connections', connectionRoutes);
+//app.use('/connections', connectionRoutes);
 app.use('/users', userRoutes);
 
 app.use((req, res, next) => {
