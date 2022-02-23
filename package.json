@@ -1,0 +1,11 @@
+{
+  "name": "projectxpediton",
+  "version": "1.0.0",
+  "description": "An app to plan your perfect vacation",
+  "main": "app.js",
+  "authors": "Devin Willse, Alison Arnette, Jason Freeman, Corey Herron, Ryan Essenmacher, Dylan G, Walter",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "Xpedtion"
+}
