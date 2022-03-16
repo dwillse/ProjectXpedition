@@ -7,7 +7,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 //const connectionRoutes = require('./routes/connectionRoutes');
-const userRoutes = require('./routes/userRoutes');
+//const userRoutes = require('./routes/userRoutes');
 
 // create app
 const app = express();
@@ -57,7 +57,7 @@ app.get('/', (req, res) => {
 });
 
 //app.use('/connections', connectionRoutes);
-app.use('/users', userRoutes);
+//app.use('/users', userRoutes);
 
 app.use((req, res, next) => {
     let err = new Error('The server cannot locate ' + req.url);

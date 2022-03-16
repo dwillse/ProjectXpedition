@@ -5,3 +5,41 @@
     background: -webkit-linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#325080", endColorstr="#D9FBFF", GradientType=1 );
 }
+
+.top, .mid, .bot {
+    border-style: none;
+    border-radius: 5%;
+    box-shadow: 5px 10px 20px;
+    padding: 5%;
+    text-align: center;
+}
+
+.top, .container {
+    margin: 5% 10% 5% 10%;
+}
+
+.mid, .midImg {
+    width: 45%;
+    float: left;
+}
+
+.mid {
+    margin-right: 5%;
+}
+
+.bot, .botImg {
+    width: 45%;
+    float: left;
+}
+
+.botImg {
+    margin-right: 5%;
+}
+
+.midImg, .botImg {
+    border-style: none;
+    border-radius: 5%;
+    box-shadow: 5px 10px 20px;
+    width: 40%;
+    height: auto;
+}
