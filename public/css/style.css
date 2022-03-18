@@ -8,12 +8,13 @@
 
 nav {
     text-align: right;
+    background-color: #BBE8FF;
+    padding: 2%;
+    text-decoration: none;
 }
 
 footer {
-    position: absolute;
-    float: node;
-    bottom: 0;
+    clear: both;
 }
 
 .top, .mid, .bot {
