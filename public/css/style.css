@@ -6,6 +6,16 @@
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#325080", endColorstr="#D9FBFF", GradientType=1 );
 }
 
+nav {
+    text-align: right;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 .top, .mid, .bot {
     border-style: none;
     border-radius: 5%;
