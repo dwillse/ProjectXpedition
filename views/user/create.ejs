@@ -1,15 +1,23 @@
-<%- include('./partials/header.ejs')%>
+<!-- <%- include('./partials/header.ejs')%> -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<link rel="stylesheet" src="public/css/style.css">
+</head>
 
+<body>
 <div class="signUp">
-<h1>Sign up</h1>
-<form>
-    <input type="first name" class="input-box" placeholder="First name">
-    <input type="last name" class="input-box" placeholder="Last name">
-    <input type="email" class="input-box" placeholder="Email">
-    <input type="password" class="input-box" placeholder="Password">
-</form>
+    <h1>Sign up</h1>
+    <form action="/action_page.php">
+        <input type="email" class="input-box" placeholder="Email">
+        <input type="password" class="input-box" placeholder="Password">
+    </form>
 </div>
+</body>
+
+</html> 
 
 
 
-<%- include('./partials/footer.ejs')%>
+<!-- <%- include('./partials/footer.ejs')%> -->

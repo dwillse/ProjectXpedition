@@ -57,5 +57,10 @@ footer {
 
 .signUp{
     width: 300px;
-
+    box-shadow: 0 0 3px 0;
+    background: #ffff;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
 }
+
