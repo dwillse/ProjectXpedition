@@ -8,12 +8,13 @@
 
 nav {
     text-align: right;
+    background-color: #BBE8FF;
+    padding: 2%;
+    text-decoration: none;
 }
 
 footer {
-    position: absolute;
-    float: node;
-    bottom: 0;
+    clear: both;
 }
 
 .top, .mid, .bot {
@@ -53,3 +54,13 @@ footer {
     width: 40%;
     height: auto;
 }
+
+.signUp{
+    width: 300px;
+    box-shadow: 0 0 3px 0;
+    background: #ffff;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+}
+

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 public class database 
@@ -41,5 +42,16 @@ class Location
         this.longitude = longitude;
     }
     
-    
+
+public class Database {
+    String country;
+    String excursion;
+    Location location;
+    String website;
+    String description;
+    double reviews;
+    //couldn't remember if we decided on anything for tags so
+    //I'm just putting it here as a placeholder
+    String[] tags;
+>>>>>>> 896f386d662b357eae8b252c26df8b0524bf247b
 }
