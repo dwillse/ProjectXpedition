@@ -14,8 +14,9 @@ public class Location
 
     private double getLatitude() {
         return latitude;
-    }
-
+    
+        
+        9
     private double getLongitude() {
         return longitude;
     }

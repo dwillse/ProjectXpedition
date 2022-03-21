@@ -1,12 +1,22 @@
 <<<<<<< HEAD
+import java.util.*;
 
-
+//The database class will eventually pull information from SQL to make a list of excursions for the algorithm to work on
 public class database 
+{
+    ArrayList<Excursion> excursionArray = new ArrayList<>();
+
+}
+
+
+// This is all the information we need for each individual excursion
+
+class Excursion
 {
     String name;
     String excursion;
     Location location;
-    String[] tags;
+    Tag tags;
     String website;
     String description;
     double reviews;
@@ -14,7 +24,16 @@ public class database
 }
 
 
+//This class is used to tag each excursion with certain values
+class Tag
+{
+    
 
+
+}
+
+
+//This class is used to find the location of an excursion in the real world using lat and long
 class Location 
 {
     private double latitude;
@@ -43,7 +62,7 @@ class Location
     }
     
 
-public class Database {
+/*public class Database {
     String country;
     String excursion;
     Location location;
@@ -55,3 +74,4 @@ public class Database {
     String[] tags;
 >>>>>>> 896f386d662b357eae8b252c26df8b0524bf247b
 }
+*/
