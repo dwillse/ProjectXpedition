@@ -1,15 +1,18 @@
-<<<<<<< HEAD
+
 import java.util.*;
 
 //The database class will eventually pull information from SQL to make a list of excursions for the algorithm to work on
 public class database 
 {
+
     ArrayList<Excursion> excursionArray = new ArrayList<>();
 
 }
 
 
 // This is all the information we need for each individual excursion
+
+
 
 class Excursion
 {
