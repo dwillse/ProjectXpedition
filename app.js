@@ -4,8 +4,8 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
-//const connectionRoutes = require('./routes/connectionRoutes');
-//const userRoutes = require('./routes/userRoutes');
+const locationRoutes = require('./routes/locationRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // create app
 const app = express();
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-//app.use('/connections', connectionRoutes);
+app.use('/locations', locationRoutes);
 //app.use('/users', userRoutes);
 
 app.use((req, res, next) => {

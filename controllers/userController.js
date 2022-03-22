@@ -1,4 +1,4 @@
-const model = require("../models/user");
+/*const model = require("../models/user");
 
 exports.results = (req, res)=> {
     let locations = model.find();
@@ -15,6 +15,6 @@ exports.new = (req, res) => {
 
 exports.pref = (req, res) => {
     res.render('../location/ratePref');
-};
+};*/
 
 
