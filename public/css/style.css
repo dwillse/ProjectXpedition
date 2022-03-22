@@ -33,7 +33,12 @@ button, input[type=submit] {
     background-color: #325080;
     border: none;
     color: white;
-    padding: 2%;
+    padding: 1% 5% 1% 5%;
+    border-radius: 25px;
+}
+
+select {
+    padding: 1%;
     border-radius: 25px;
 }
 
