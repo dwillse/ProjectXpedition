@@ -115,7 +115,7 @@ class Tag
     String tag2;
     String tag3;
 
-    //Multiple constructors based on number of tags
+    //Multiple constructors based on number of tags needed
     public Tag(String tag1){
         this.tag1 = tag1;
     }
@@ -154,21 +154,3 @@ class Tag
     }
 
 }
-
-
-
-    
-
-/*public class Database {
-    String country;
-    String excursion;
-    Location location;
-    String website;
-    String description;
-    double reviews;
-    //couldn't remember if we decided on anything for tags so
-    //I'm just putting it here as a placeholder
-    String[] tags;
->>>>>>> 896f386d662b357eae8b252c26df8b0524bf247b
-}
-*/
