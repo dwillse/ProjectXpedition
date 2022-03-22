@@ -6,11 +6,11 @@ const {validateSignUp, validateLogIn, validateResult} = require('../middlewares/
 
 const router = express.Router();
 
-router.get('/new', isGuest, controller.new);
-router.post('/', isGuest, validateSignUp, validateResult, controller.create);
-router.get('/login', isGuest, controller.getUserLogin);
-router.post('/login', logInLimiter, isGuest, validateLogIn, validateResult, controller.login);
-router.get('/profile', isLoggedIn, controller.profile);
-router.get('/logout', isLoggedIn, controller.logout);
+//Handles the Login request
+router.get("/login", controller.login);
+
+//Handles the create account request
+router.get("/new", controller.signUp);
+
 
 module.exports = router;
