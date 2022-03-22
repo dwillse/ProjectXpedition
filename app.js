@@ -4,8 +4,13 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
+<<<<<<< HEAD
 const locationRoutes = require('./routes/locationRoutes');
 const userRoutes = require('./routes/userRoutes');
+=======
+const connectionRoutes = require('./routes/userRoutes');
+//const userRoutes = require('./routes/userRoutes');
+>>>>>>> c99ff734f16b1460f198f2f75d9c8558f7f2b88b
 
 // create app
 const app = express();
@@ -14,6 +19,7 @@ const app = express();
 let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
@@ -25,7 +31,16 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+<<<<<<< HEAD
 app.use('/locations', locationRoutes);
+=======
+app.get('/preferences', (req, res) => {
+    res.render('location/choosePref');
+});
+
+
+//app.use('/connections', connectionRoutes);
+>>>>>>> c99ff734f16b1460f198f2f75d9c8558f7f2b88b
 //app.use('/users', userRoutes);
 
 app.use((req, res, next) => {
