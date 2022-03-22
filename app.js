@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
-//const connectionRoutes = require('./routes/connectionRoutes');
+const connectionRoutes = require('./routes/userRoutes');
 //const userRoutes = require('./routes/userRoutes');
 
 // create app
