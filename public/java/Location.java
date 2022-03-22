@@ -12,22 +12,25 @@ public class Location
         this.longitude = lo;
     }
 
-    private double getLatitude() {
+    public double getLatitude() {
         return latitude;
-    
+    }
         
-        9
-    private double getLongitude() {
+        
+    public double getLongitude() {
         return longitude;
     }
 
-    private void setLatitude(double latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    private void setLongitude(double longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
     
+    public String toString(){
+        return "Latitude: " + latitude + "\nLongitude: " + longitude;
+    }
     
 }
