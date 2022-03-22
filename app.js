@@ -14,6 +14,7 @@ const app = express();
 let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
@@ -25,7 +26,13 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.use('/' , connectionRoutes);
+app.get('/preferences', (req, res) => {
+    res.render('location/choosePref');
+});
+
+
+//app.use('/connections', connectionRoutes);
+//app.use('/users', userRoutes);
 
 app.use((req, res, next) => {
     let err = new Error('The server cannot locate ' + req.url);
