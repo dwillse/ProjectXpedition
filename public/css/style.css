@@ -251,7 +251,6 @@ label {
     margin-top: 20px;
 }
 
-<<<<<<< HEAD
 /* stars stars */
 .stars {
   --s:50px;
@@ -316,6 +315,14 @@ input:nth-of-type(8):hover ~ i {--l:8}
 input:nth-of-type(9):hover ~ i {--l:9}
 input:nth-of-type(10):hover ~ i {--l:10}
 /*input:nth-of-type(N):hover ~ i {--l:N}*/
-=======
->>>>>>> c54f09593ac1a4c7b68f281ecf410b7a973368e7
 
+/* rate pref pictures stuffs */
+.picture 
+{
+    padding: 2.5% 2.5% 2.5% 2.5%;
+}
+
+.picture img, p
+{
+    margin-left: 25%;
+}
