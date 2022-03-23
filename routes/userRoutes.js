@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const controller = require('../controllers/userController');
 
 const router = express.Router();
@@ -25,4 +25,4 @@ router.get('/ratings' , controller.rating);
 router.get('/locations' , controller.results);
 
 
-module.exports = router;*/
+module.exports = router;

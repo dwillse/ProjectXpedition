@@ -1,4 +1,4 @@
-/*const model = require("../models/user");
+const model = require("../models/user");
 
 
 exports.results = (req, res)=> {
@@ -15,21 +15,17 @@ exports.new = (req, res) => {
 };
 
 exports.pref = (req, res) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    res.render('../location/ratePref');
-};*/
-=======
-    res.render('./location/ratePref');
-=======
+    res.render('../location/choosePref');
+};
+    
+exports.ratings = (req, res) => {
     res.render('./location/choosePref');
->>>>>>> d678fda6888f200355c484101b5b523666e573e4
 };
 
 exports.home = (req, res) => {
     res.render('./index');
 };
->>>>>>> 640e4580a2d1aab19b62a95a20f1f993ff699d02
+
 
 
 exports.details = (req, res, next)=> {
