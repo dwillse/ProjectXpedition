@@ -1,28 +1,21 @@
 const express = require('express');
 const controller = require('../controllers/userController');
-
 const router = express.Router();
-
-//Handles the Login request
-router.get("/login", controller.login);
 
 //Handles the create account request
 router.get("/new", controller.new);
 
-//Handles the default request
-router.get("/", controller.home);
+//Post to create new account
+router.post('/', controller.create);
 
-//Handles the choosing preferences page
-router.get("/preferences", controller.pref);
+//Handles the Login request
+router.get("/login", controller.getUserLogin);
 
-//Handles the details page
-router.get('/locations/:id' , controller.details);
+//Post to login
+router.post('/login', controller.login);
 
-//handles the Rate preferences page
-router.get('/ratings' , controller.rating);
-
-//handles the results page
-router.get('/locations' , controller.results);
+//Handles logging out
+router.get('/logout', controller.logout);
 
 
 module.exports = router;

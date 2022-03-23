@@ -1,4 +1,7 @@
-/*const locations = [
+
+const e = require('express');
+
+const locations = [
     {
         id: '1',
         Country: 'Brazil',
@@ -24,4 +27,9 @@
         Country: 'Japan',
         content: 'a;gha;ag;lhag;alkga;gkha;hgkjagd;a'
     }
-];*/
+];
+
+exports.find = function(){
+    return locations;
+};
+
