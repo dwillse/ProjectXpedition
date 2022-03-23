@@ -3,7 +3,7 @@ const model = require("../models/user");
 
 exports.results = (req, res)=> {
     let locations = model.find();
-    res.render('./locations/results', {locations});
+    res.render('./location/results', {locations});
 };
 
 exports.login = (req, res) => {
@@ -15,7 +15,7 @@ exports.new = (req, res) => {
 };
 
 exports.pref = (req, res) => {
-    res.render('./location/ratePref');
+    res.render('./location/choosePref');
 };
 
 exports.home = (req, res) => {
@@ -36,5 +36,5 @@ exports.details = (req, res, next)=> {
 };
 
 exports.rating = (req, res) => {
-    res.render('./location/choosePref');
+    res.render('./location/ratePref');
 };

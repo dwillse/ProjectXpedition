@@ -27,3 +27,7 @@ const locations = [
         content: 'a;gha;ag;lhag;alkga;gkha;hgkjagd;a',
     }
 ];
+
+exports.find = function(){
+    return locations;
+};
