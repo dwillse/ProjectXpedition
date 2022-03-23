@@ -3,7 +3,7 @@
 
 exports.results = (req, res)=> {
     let locations = model.find();
-    res.render('./locations/results', {locations});
+    res.render('./location/results', {locations});
 };
 
 exports.login = (req, res) => {
@@ -16,10 +16,14 @@ exports.new = (req, res) => {
 
 exports.pref = (req, res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     res.render('../location/ratePref');
 };*/
 =======
     res.render('./location/ratePref');
+=======
+    res.render('./location/choosePref');
+>>>>>>> d678fda6888f200355c484101b5b523666e573e4
 };
 
 exports.home = (req, res) => {
@@ -41,5 +45,5 @@ exports.details = (req, res, next)=> {
 };
 
 exports.rating = (req, res) => {
-    res.render('./location/choosePref');
+    res.render('./location/ratePref');
 };
