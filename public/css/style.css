@@ -222,7 +222,7 @@ label {
 
 .signUp {
     width: 500px;
-    height: 550px;
+    height: 600px;
     box-shadow: 0 0 3px 0;
     background: #ffff;
     padding: 2%;
@@ -238,3 +238,7 @@ label {
     margin-top: -2%;
 }
 
+
+#sign {
+    margin-top: 20px;
+}
