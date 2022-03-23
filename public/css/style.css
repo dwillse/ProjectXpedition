@@ -20,6 +20,9 @@ footer {
     clear: both;
     background-color: #D3C098;
     padding: 1%;
+    position: fixed;
+    width: 97.1%;
+    bottom: 0%;
 }
 
 nav a, footer a {
@@ -247,3 +250,5 @@ label {
 #sign {
     margin-top: 20px;
 }
+
+
