@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 const e = require('express');
 
 const locations = [
@@ -31,3 +33,4 @@ const locations = [
 exports.find = function(){
     return locations;
 };
+>>>>>>> d678fda6888f200355c484101b5b523666e573e4

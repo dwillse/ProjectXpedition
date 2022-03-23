@@ -4,7 +4,11 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
+const connectionRoutes = require('./routes/userRoutes');
+//const userRoutes = require('./routes/userRoutes');
+
 const userRoutes = require('./routes/userRoutes');
+
 
 // create app
 const app = express();
@@ -25,12 +29,21 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+
+app.use('/locations', locationRoutes);
+
 app.get('/preferences', (req, res) => {
     res.render('location/choosePref');
 });
 
 
+
+//app.use('/connections', connectionRoutes);
+
+//app.use('/users', userRoutes);
+
 app.use('/', userRoutes);
+
 
 
 app.use((req, res, next) => {
