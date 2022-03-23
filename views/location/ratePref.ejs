@@ -1,15 +1,85 @@
 <%- include('../partials/header.ejs') %>
 <head>
+    <style>
+        h1 {text-align: center;}
+    </style>
     <title>Rate your Preferences</title>
-    <body>
-        <p id = "test"></p>
-        <script>
-           window.onload = function getPref() { 
-                 var x = document.getElementById("ruins").ariaChecked === true; 
-                  document.getElementbyId("test").innerHTML = x;
-                 } 
-     </script>
-    </body>
+        <h1 id ="test">
+            You choose what you liked! Now tell us how much you wish to do them!
+        </h1>
+        
+            <div class="row">
+                <div class="picture">
+                    <input type="image" id="ruins" style="display: none;"/>
+                    <label for="ruins"><img src="../images/ruins.jpg" class="checkboxImage" ><br>
+                        <p class = "AttractionText">Rate Attraction</p>
+                        <div class="stars">
+                            <input type="radio" name="rating" value="1" />
+                            <input type="radio" name="rating" value="2" />
+                            <input type="radio" name="rating" value="3" />
+                            <input type="radio" name="rating" value="4" />
+                            <input type="radio" name="rating" value="5" />
+                            <i></i>
+                            </div>
+
+                </div>
+                <div class="picture">
+                    <input type="image" id="ruins2" style="display: none;"/>
+                    <label for="ruins2"><img src="../images/ruins.jpg" class="checkboxImage"><br>   
+                        <p>Rate Attraction</p>
+                        <div class="stars">
+                            <input type="radio" name="rating2" value="1" />
+                            <input type="radio" name="rating2" value="2" />
+                            <input type="radio" name="rating2" value="3" />
+                            <input type="radio" name="rating2" value="4" />
+                            <input type="radio" name="rating2" value="5" />
+                            <i></i>
+                            </div>                   
+                </div>
+                
+                <div class="picture">
+                    <input type="image" id="ruins3" style="display: none;"/>
+                    <label for="ruins3"><img src="../images/ruins.jpg" class="checkboxImage"><br>
+                        <p>Rate Attraction</p>
+                        <div class="stars">
+                            <input type="radio" name="rating3" value="1" />
+                            <input type="radio" name="rating3" value="2" />
+                            <input type="radio" name="rating3" value="3" />
+                            <input type="radio" name="rating3" value="4" />
+                            <input type="radio" name="rating3" value="5" />
+                            <i></i>
+                            </div>              
+                </div>
+    
+                <div class="picture">
+                    <input type="image" id="ruins4" style="display: none;"/>
+                    <label for="ruins4"><img src="../images/ruins.jpg" class="checkboxImage"><br>
+                        <p>Rate Attraction</p>
+                        <div class="stars">
+                            <input type="radio" name="rating4" value="1" />
+                            <input type="radio" name="rating4" value="2" />
+                            <input type="radio" name="rating4" value="3" />
+                            <input type="radio" name="rating4" value="4" />
+                            <input type="radio" name="rating4" value="5" />
+                            <i></i>
+                        </div>                   
+                </div>
+    
+                <div class="picture">
+                    <input type="image" id="ruins5" style="display: none;"/>
+                    <label for="ruins5"><img src="../images/ruins.jpg" class="checkboxImage"><br>
+                        <p>Rate Attraction</p>
+                        <div class="stars">
+                            <input type="radio" name="rating5" value="1" />
+                            <input type="radio" name="rating5" value="2" />
+                            <input type="radio" name="rating5" value="3" />
+                            <input type="radio" name="rating5" value="4" />
+                            <input type="radio" name="rating5" value="5" />
+                            <i></i>
+                            </div>
+            </div>
+            
+        </div>
 </head>
 
 <%- include('../partials/footer.ejs') %>
