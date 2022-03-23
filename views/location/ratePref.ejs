@@ -1,15 +1,15 @@
-<%- include('./partials/header.ejs') %>
+<%- include('../partials/header.ejs') %>
 <head>
     <title>Rate your Preferences</title>
     <body>
         <p id = "test"></p>
         <script>
-            window.onloud = function getPref() {
-                var x = document.getElementById("ruins").ariaChecked = true;
-                document.getElementbyId("demo").innerHTML = x;
-            }
-        </script>
+           window.onload = function getPref() { 
+                 var x = document.getElementById("ruins").ariaChecked === true; 
+                  document.getElementbyId("test").innerHTML = x;
+                 } 
+     </script>
     </body>
 </head>
 
-<%- include('./partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>
