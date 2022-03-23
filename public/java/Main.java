@@ -42,11 +42,25 @@ public class Main {
         excursionArray.add(exc8);
         excursionArray.add(exc9);
         excursionArray.add(exc10);
-        
-        
 
-        System.out.println(excursionArray.get(0));
-        System.out.println(excursionArray.get(2));
+        //creating arrays for sample user
+        ArrayList<Tag> prefArray1 = new ArrayList<>();
+        ArrayList<Tag> prefArray2 = new ArrayList<>();
+        ArrayList<Tag> prefArray3 = new ArrayList<>();
+        ArrayList<Tag> prefArray4 = new ArrayList<>();
+        ArrayList<Tag> prefArray5 = new ArrayList<>();
+        prefArray1.add(new Tag("park"));
+        prefArray2.add(new Tag("museum"));
+        prefArray3.add(new Tag("zoo"));
+        prefArray4.add(new Tag("beach"));
+        prefArray5.add(new Tag("castle"));
+
+        //creating a sample user
+        UserPreference user = new UserPreference(prefArray5, prefArray4, prefArray3, prefArray2, prefArray1);
+
+        Algorithm.CallAlgorithim(user, excursionArray);
+        //System.out.println(Algorithm.CallAlgorithim(user, excursionArray));
+
 
 
     }
