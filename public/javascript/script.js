@@ -7,3 +7,15 @@ window.onload = function hello() {
     let pHeader = document.getElementById("pHeader");
     pHeader.innerHTML = location;
 }
+
+windown.onload = function selectedPref() {
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', (event) => {
+        let checkboxes = document.querySelectorAll('input[name="pref"]:checked');
+        let values = [];
+        checkboxes.forEach((checkbox) => {
+            values.push(checkbox.value);
+        });
+        alert(values);
+    });
+}
