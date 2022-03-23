@@ -1,13 +1,23 @@
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthSplitPaneUI;
+
 //Class which holds our algorithm
 public class Algorithm {
     //This will be the Method that you actually call to get results
-    //TODO fix return type
-	public static /*type should be results*/ CallAlgorithim (UserPreference user, ArrayList<Excursion> exArray)
+    //TODO fix return type if needed
+	public static ArrayList<Excursion> CallAlgorithim (UserPreference user, ArrayList<Excursion> exArray)
 	{
 		Excursion startingPoint = getStartingPoint(user, exArray);
 		ArrayList<Excursion> options = AllWithinFifty(startingPoint, exArray);
+
+        //FOR TESTING: REMOVE LATER
+        System.out.println("FOR TESTING REMOVE LATER\n");
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println(options.get(i).getExcursion());
+        }      
+
+        return options;
 	}
 
 	//This method returns ALL excursions within a 50 mile radius of a different excursion
@@ -20,6 +30,7 @@ public class Algorithm {
 			if(DistanceFormula(exArray.get(i).getLocation(), startingPoint.getLocation()) < 1)
 				withinFifty.add(exArray.get(i));
 		}
+        System.out.println(withinFifty);
 		return withinFifty;		
 	}
 
@@ -32,6 +43,8 @@ public class Algorithm {
 	//Determines the best Excursion for the user based on their preferences and its ratings
 	private static Excursion getStartingPoint(UserPreference user, ArrayList<Excursion> exArray)
 	{
+        //starting point = The Broads
+        //bestTags = zoo
 		Excursion startingPoint = exArray.get(0);
 		Boolean firstTime = true;
 		ArrayList<Tag> bestTags = user.getFiveStar();
@@ -68,7 +81,7 @@ public class Algorithm {
 			{
                 //If I have this correct, if bestTags string is equal to an excursion's tag
                 //it passes
-				if(bestTags.get(j).equals(exArray.get(i).getTags()))
+				if(bestTags.get(j).getTag1().equals(exArray.get(i).getTags().getTag1()))
 				{
                     //then if its the first time your startingPoint now becomes the excursion whose
                     //tag was equal to the bestTags
