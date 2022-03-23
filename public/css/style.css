@@ -319,10 +319,14 @@ input:nth-of-type(10):hover ~ i {--l:10}
 /* rate pref pictures stuffs */
 .picture 
 {
-    padding: 2.5% 2.5% 2.5% 2.5%;
+    padding: 3.2%
 }
 
-.picture img, p
+.picture img
 {
-    margin-left: 25%;
+    margin-left: 20%;
+}
+.AttractionText
+{
+    margin-left: 25%
 }
