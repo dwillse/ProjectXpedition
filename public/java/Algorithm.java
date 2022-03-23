@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import javax.swing.plaf.synth.SynthSplitPaneUI;
-
 //Class which holds our algorithm
 public class Algorithm {
     //This will be the Method that you actually call to get results
@@ -30,7 +28,6 @@ public class Algorithm {
 			if(DistanceFormula(exArray.get(i).getLocation(), startingPoint.getLocation()) < 1)
 				withinFifty.add(exArray.get(i));
 		}
-        System.out.println(withinFifty);
 		return withinFifty;		
 	}
 
@@ -43,8 +40,7 @@ public class Algorithm {
 	//Determines the best Excursion for the user based on their preferences and its ratings
 	private static Excursion getStartingPoint(UserPreference user, ArrayList<Excursion> exArray)
 	{
-        //starting point = The Broads
-        //bestTags = zoo
+
 		Excursion startingPoint = exArray.get(0);
 		Boolean firstTime = true;
 		ArrayList<Tag> bestTags = user.getFiveStar();
