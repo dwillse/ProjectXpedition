@@ -1,20 +1,23 @@
-<%- include('../partials/header.ejs') %>
+
+<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
 
 <head>
 <title>Create Account page</title>
 
 </head>
 
-<body>
+<body id="reg">
 <div class="signUp">
-    <h1>Sign up</h1>
+
     <form action="/action_page.php">
+        <img src="../../images/logo.png" id="SignUpLogo">
         <input type="Fname" class="input-box" placeholder="First Name">
         <input type="Lname" class="input-box" placeholder="Last Name">
         <input type="email" class="input-box" placeholder="Email">
         <input type="password" class="input-box" placeholder="Password">
-        <button type="button" class="signUp-button">Create Account</button>
-        <p>Have an account? <a href="#">Sign in</a></p>
+        <input type="password" class="input-box" placeholder="Confirm Password">
+        <button onClick="location.href='https://www.google.com'" type="button" class="signUp-button">Create Account</button>
+        <p id="sign">Have an account? <a href="../users/login" >Sign in</a></p>
     </form>
 </div>
 </body>
@@ -22,5 +25,3 @@
 </html> 
 
 
-
-<%- include('../partials/footer.ejs')%> 

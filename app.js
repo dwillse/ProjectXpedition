@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const userRoutes = require('./routes/userRoutes');
+const locationRoutes = require('./routes/locationRoutes');
 
 // create app
 const app = express();
@@ -13,7 +14,6 @@ const app = express();
 let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
-app.set('views', 'views');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
@@ -25,13 +25,8 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/preferences', (req, res) => {
-    res.render('location/choosePref');
-});
-
-
-app.use('/', userRoutes);
-
+app.use('/users', userRoutes);
+app.use('/locations', locationRoutes);
 
 app.use((req, res, next) => {
     let err = new Error('The server cannot locate ' + req.url);

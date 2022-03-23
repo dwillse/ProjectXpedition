@@ -7,11 +7,11 @@
         All you have to do to get started is pick one of our available locations and then click Get Started.
         You'll be asked to fill out a quick preference sheet, and then you'll rate your preferences for all the popular activities in that country.
         After that, we'll do the rest!
-    </p>
+    </p><br>
 
-    <form action="/preferences">
+    <form action="/locations/preferences">
         <select name="location" id="location">
-            <option value="none" selected disabled hidden>- Select a Location -</option>
+            <option value="none" selected disabled>- Select a Location -</option>
             <option value="belize">Belize</option>
             <option value="brazil">Brazil</option>
             <option value="england">England</option>
@@ -30,7 +30,7 @@
         <p>Feel free to create an account!
             Or you can click the log in button at the top of the page.
         </p>
-        <button onclick="location.href='./login'">Create An Account</button>
+        <button onclick="location.href='./new'">Create An Account</button>
 
         <p>Do you like our product and want to support us?</p>
         <p>Now you can! You can join our Gofundme to become one of our supporters!</p>
