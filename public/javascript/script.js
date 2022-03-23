@@ -5,5 +5,5 @@ window.onload = function hello() {
     location = location.charAt(0).toUpperCase() + location.slice(1);
     
     let pHeader = document.getElementById("pHeader");
-    pHeader.innerHTML = location + "'s Preferences";
+    pHeader.innerHTML = location;
 }

@@ -87,6 +87,11 @@ select {
 
 
 /*Preference page style start*/
+.center {
+    text-align: center;
+    padding: 5%;
+}
+
 .checkboxImage {
     width: 150px;
     height: 150px;
