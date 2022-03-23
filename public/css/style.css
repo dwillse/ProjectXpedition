@@ -20,6 +20,9 @@ footer {
     clear: both;
     background-color: #D3C098;
     padding: 1%;
+    position: fixed;
+    width: 97.1%;
+    bottom: 0%;
 }
 
 nav a, footer a {
@@ -248,6 +251,7 @@ label {
     margin-top: 20px;
 }
 
+<<<<<<< HEAD
 /* stars stars */
 .stars {
   --s:50px;
@@ -312,4 +316,6 @@ input:nth-of-type(8):hover ~ i {--l:8}
 input:nth-of-type(9):hover ~ i {--l:9}
 input:nth-of-type(10):hover ~ i {--l:10}
 /*input:nth-of-type(N):hover ~ i {--l:N}*/
+=======
+>>>>>>> c54f09593ac1a4c7b68f281ecf410b7a973368e7
 
