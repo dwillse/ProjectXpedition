@@ -90,7 +90,12 @@ select {
     font-size:x-large;
 }
 
-#about select, #startBtn {
+#about select {
+    font-size: large;
+    text-align: center;
+}
+
+#about #startBtn {
     font-size: large;
 }
 
