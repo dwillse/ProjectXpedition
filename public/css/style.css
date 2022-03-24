@@ -40,6 +40,14 @@ button, input[type=submit] {
     border-radius: 25px;
 }
 
+input[type=submit]:disabled {
+    background-color: #7F8794;
+    border: none;
+    color: white;
+    padding: 1% 5% 1% 5%;
+    border-radius: 25px;
+}
+
 select {
     padding: 1%;
     border-radius: 25px;

@@ -10,7 +10,7 @@
     </p><br>
 
     <form action="/locations/preferences">
-        <select name="location" id="location">
+        <select name="location" id="location" required onchange="enableButton()">
             <option value="none" selected disabled>- Select a Location -</option>
             <option value="belize">Belize</option>
             <option value="brazil">Brazil</option>
@@ -20,7 +20,7 @@
         </select>
 
         <br><br>
-        <input type="submit" value="Get Started">
+        <input type="submit" id="startBtn" value="Get Started" disabled>
     </form>
 </div>
 

@@ -9,7 +9,7 @@ window.onload = function hello() {
     pHeader.innerHTML = location;
 }
 
-windown.onload = function selectedPref() {
+function selectedPref() {
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', (event) => {
         let checkboxes = document.querySelectorAll('input[name="pref"]:checked');
@@ -17,6 +17,11 @@ windown.onload = function selectedPref() {
         checkboxes.forEach((checkbox) => {
             values.push(checkbox.value);
         });
-        alert(values);
     });
+}
+
+function enableButton() {
+    var select = document.getElementById('location');
+    var btn = document.getElementById('startBtn');
+    btn.disabled = !select.value;
 }
