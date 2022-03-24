@@ -25,6 +25,11 @@ function enableButton() {
     var btn = document.getElementById('startBtn');
     btn.disabled = !select.value;
 }
-function updateText() {
+
+window.onload = function updateText() {
+let slotNum = document.getElementsByClassName("AttractionText");
+if(ruins.value =="Ruins" && document.getElementById("ruins").ariaChecked == true){
+    slotNum[0].innerHTML = "test";
+}
 
 }
