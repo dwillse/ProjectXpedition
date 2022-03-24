@@ -25,3 +25,6 @@ function enableButton() {
     var btn = document.getElementById('startBtn');
     btn.disabled = !select.value;
 }
+function updateText() {
+
+}
