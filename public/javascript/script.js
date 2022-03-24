@@ -25,8 +25,29 @@ window.onload = function hello() {
         
         for(let i = 0; i < pTags.length; i++) {
             pTags[i].innerHTML = tags[i];
+            let imageURL = "";
+            switch(tags[i]) {
+                case 'Ruins': imageURL = '../images/ruins.jpg'; break;
+                case 'Ocean': imageURL = '../images/ocean.jpg'; break;
+                case 'Snorkel': imageURL = '../images/snorkel.jpg'; break;
+                case 'Caves': imageURL = '../images/caves.jpg'; break;
+                case 'Fine Dining': imageURL = '../images/fine.jpg'; break;
+                case 'Local Food': imageURL = '../images/local.jpg'; break;
+                case 'Beaches': imageURL = '../images/beach.jpg'; break;
+                case 'Museums': imageURL = '../images/museum.jpg'; break;
+                case 'Jungles': imageURL = '../images/jungle.jpg'; break;
+                case 'Bird Watching': imageURL ='../images/bird.jpg'; break;
+                default: break;
+            }
+            let pictures = document.getElementsByTagName("img");
+            pictures[i + 1].src = imageURL;
         }
         
+        
+        
+        
+
+
 
 
     }
@@ -50,10 +71,11 @@ function enableButton() {
     btn.disabled = !select.value;
 }
 
+/* 
 window.onload = function updateText() {
 let slotNum = document.getElementsByClassName("AttractionText");
 if(ruins.value =="Ruins" && document.getElementById("ruins").ariaChecked == true){
     slotNum[0].innerHTML = "test";
 }
 
-}
+}*/
