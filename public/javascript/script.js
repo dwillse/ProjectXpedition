@@ -1,5 +1,3 @@
-const { load } = require("nodemon/lib/config");
-
 window.onload = function hello() {
     let location = window.location.href;
     location = location.substring(location.indexOf("=") + 1, location.length);
