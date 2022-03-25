@@ -1,28 +1,46 @@
-.background {
-    background: hsla(217, 44%, 35%, 1);
-    background: linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
-    background: -moz-linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
-    background: -webkit-linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#325080", endColorstr="#D9FBFF", GradientType=1 );
-}
-
 body {
     font-family: "Verdana";
+    background-color: white;
 }
 
 nav {
     text-align: right;
     background-color: #BBE8FF;
+    margin-left: -5%;
+    height: 180px;
+    width: 105.4%;
+    margin-top: -.5%;
+}
+
+.head {
+    color: black;
+    text-align:right;
+    text-decoration: none;
     padding: 1%;
+    border-radius: 4px;
+}
+
+.head:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.logo {
+    margin-right: 40%;
+    height: 65%;
 }
 
 footer {
     clear: both;
     background-color: #D3C098;
     padding: 1%;
+    position: fixed;
+    margin-left: -1%;
+    width: 100%;
+    bottom: 0%;
 }
 
-nav a, footer a {
+footer a {
     text-decoration: none;
     font-size: 0.8em;
     color: black;
@@ -31,6 +49,14 @@ nav a, footer a {
 
 button, input[type=submit] {
     background-color: #325080;
+    border: none;
+    color: white;
+    padding: 1% 5% 1% 5%;
+    border-radius: 25px;
+}
+
+input[type=submit]:disabled {
+    background-color: #7F8794;
     border: none;
     color: white;
     padding: 1% 5% 1% 5%;
@@ -51,11 +77,23 @@ select {
 }
 
 .top, .container {
-    margin: 5% 10% 5% 10%;
+    margin: 5% 15% 5% 15%;
 }
 
 .container {
     display: flex;
+}
+
+#about .tex {
+    font-size: large;
+}
+
+#about select {
+    font-size: large;
+}
+
+#about #startBtn {
+    font-size: large;
 }
 
 .mid, .midImg {
@@ -84,7 +122,25 @@ select {
     height: auto;
 }
 
+h1 {
+    font-size: xxx-large;
+}
 
+#support {
+   padding-top: 5%;
+}
+
+#support .tex, #create{
+    font-size: large;
+}
+
+#contact {
+    padding-top: 5%;
+}
+
+#contact {
+    font-size: large;
+}
 
 /*Preference page style start*/
 .center {
@@ -205,7 +261,7 @@ label {
     margin-top: 4%;
     margin-bottom: 4%;
     width: 100%;
-    height: 10%;
+    height: 8%;
 }
 
 #link {
@@ -246,4 +302,84 @@ label {
 
 #sign {
     margin-top: 20px;
+}
+
+/* stars stars */
+.stars {
+  --s:50px;
+  position:relative;
+  display:inline-flex;
+}
+.stars input {
+  width:var(--s);
+  height:var(--s);
+  margin:0;
+  opacity:0;
+  cursor:pointer;
+}
+.stars i {
+  position:absolute;
+  inset:0 0 calc(var(--s)*0.1);
+  pointer-events:none;
+  --v1:transparent,#000 0.5deg 108deg,#0000 109deg;
+  --v2:transparent,#000 0.5deg  36deg,#0000  37deg;
+  -webkit-mask:
+    conic-gradient(from 54deg  at calc(var(--s)*0.68) calc(var(--s)*0.57),var(--v1)),
+    conic-gradient(from 90deg  at calc(var(--s)*0.02) calc(var(--s)*0.35),var(--v2)),
+    conic-gradient(from 126deg at calc(var(--s)*0.5)  calc(var(--s)*0.7) ,var(--v1)),
+    conic-gradient(from 162deg at calc(var(--s)*0.5)  0                  ,var(--v2));
+  -webkit-mask-size: var(--s) var(--s);
+  -webkit-mask-composite: xor,destination-over;
+  mask-composite: exclude,add;
+  background:
+    linear-gradient(rgba(255,0,0,var(--o,0.3)) 0 0),  
+    linear-gradient(gold                       0 0)
+    #ccc;
+  background-size:calc(var(--l,0)*var(--s)) 100%,calc(var(--p,0)*var(--s)) 100%;
+  background-repeat:no-repeat;
+}
+
+.stars:focus-within {
+  outline:1px solid;
+}
+
+input:active ~ i{--o:1}
+
+input:nth-of-type(1):checked ~ i {--p:1}
+input:nth-of-type(2):checked ~ i {--p:2}
+input:nth-of-type(3):checked ~ i {--p:3}
+input:nth-of-type(4):checked ~ i {--p:4}
+input:nth-of-type(5):checked ~ i {--p:5}
+input:nth-of-type(6):checked ~ i {--p:6}
+input:nth-of-type(7):checked ~ i {--p:7}
+input:nth-of-type(8):checked ~ i {--p:8}
+input:nth-of-type(9):checked ~ i {--p:9}
+input:nth-of-type(10):checked ~ i {--p:10}
+/*input:nth-of-type(N):checked ~ i {--p:N}*/
+
+input:nth-of-type(1):hover ~ i {--l:1}
+input:nth-of-type(2):hover ~ i {--l:2}
+input:nth-of-type(3):hover ~ i {--l:3}
+input:nth-of-type(4):hover ~ i {--l:4}
+input:nth-of-type(5):hover ~ i {--l:5}
+input:nth-of-type(6):hover ~ i {--l:6}
+input:nth-of-type(7):hover ~ i {--l:7}
+input:nth-of-type(8):hover ~ i {--l:8}
+input:nth-of-type(9):hover ~ i {--l:9}
+input:nth-of-type(10):hover ~ i {--l:10}
+/*input:nth-of-type(N):hover ~ i {--l:N}*/
+
+/* rate pref pictures stuffs */
+.picture 
+{
+    padding: 3.2%
+}
+
+.picture img
+{
+    margin-left: 20%;
+}
+.AttractionText
+{
+    margin-left: 25%
 }
