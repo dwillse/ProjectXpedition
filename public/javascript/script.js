@@ -20,7 +20,7 @@ window.onload = function hello() {
     if(window.location.href.includes("ratings")) {
         let pref = window.location.href;
         pref = pref.substring(pref.indexOf("pref"), pref.length);
-        let tags = pref.split("pref=", 10);
+        let tags = pref.split("pref=", 11);
         tags.shift();
 
         for(var i = 0; i < tags.length; i++) {
@@ -49,16 +49,41 @@ window.onload = function hello() {
                 default: break;
             }
             let pictures = document.getElementsByTagName("img");
-            pictures[i + 1].src = imageURL;
+            pictures[i + 1].src = imageURL; // offset by 1 because first image is webpage logo
+        }
+        
+
+        //figure out how many are showing
+        //get the class stars and then loop through all the inputs and change the rating attr to tag value
+        let radioBtn = document.querySelectorAll('input[type=radio]');
+        radioBtn = Array.from(radioBtn);
+
+        for(let i = 0; i < tags.length; i++) {
+            for(let x = 0; x < 5; x++) {
+                radioBtn[x].name = pTags[i].innerHTML;
+            }    
+            
+            for(let x = 0; x < 5; x++) { radioBtn.shift(); }
+        }
+
+
+        let slots = document.getElementsByClassName("columnRate");
+        
+        for(let x = tags.length; x < 10; x++) {
+            slots[x].style.display = "none";
         }
         
         
-        
-        
+    }
+}
 
+function check() {
+    let checkboxes = document.querySelectorAll('input[name="pref"]:checked');
 
-
-
+    if(checkboxes.length != 0) {
+        document.getElementById("btn").disabled = false;
+    } else {
+        document.getElementById("btn").disabled = true;
     }
 }
 

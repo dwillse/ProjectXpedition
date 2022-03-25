@@ -7,7 +7,7 @@
     <h1 id="pHeader"></h1>
     <br>
 
-    <form id="preferences" action="/locations/ratings">
+    <form id="preferences" action="/locations/ratings" onchange="check()">
         <div class="row">
             <div class="column">
                 <input type="checkbox" name="pref" id="ruins" value="Ruins" style="display: none;"/>
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <input type="submit" value="Done" id="btn">
+        <input type="submit" value="Done" id="btn" disabled>
     </form>
 </div>
 

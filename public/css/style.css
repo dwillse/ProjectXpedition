@@ -369,7 +369,7 @@ input:nth-of-type(9):hover ~ i {--l:9}
 input:nth-of-type(10):hover ~ i {--l:10}
 /*input:nth-of-type(N):hover ~ i {--l:N}*/
 
-/* rate pref pictures stuffs */
+/* rate pref pictures stuffs 
 .picture 
 {
     padding: 3.2%
@@ -382,4 +382,32 @@ input:nth-of-type(10):hover ~ i {--l:10}
 .AttractionText
 {
     margin-left: 25%
+}
+*/
+
+.columnRate {
+    width: 250px;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.columnRate p {
+    text-align: center;
+}
+
+.columnRate img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#row1, #row2 {
+    text-align: center;
+    width: 100%;
+}
+
+.rowRate {
+    padding-bottom: 20px;
 }
