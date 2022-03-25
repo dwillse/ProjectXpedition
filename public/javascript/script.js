@@ -1,3 +1,12 @@
+locations = [
+    {
+        id: 1,
+        country: 'Belize',
+        content: 'asdfklajsdlfkajs',
+        
+    }
+];
+
 window.onload = function hello() {
     let location = window.location.href;
     location = location.substring(location.indexOf("=") + 1, location.length);
