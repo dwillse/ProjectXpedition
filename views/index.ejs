@@ -1,16 +1,16 @@
 <%- include('./partials/header.ejs')%>
 
-<div class="top">
-    <h1>Better Travel. Your Way.</h1>
-    <p>Xpedition is a travel software that helps you plan your perfect trip based on your preferences and input.
+<div class="top" id="about">
+    <h1>Better Travel. Your Way.</h1><br>
+    <p class="tex">Xpedition is a travel software that helps you plan your perfect trip based on your preferences and input.
         It's quick, easy, and best of all FREE!
         All you have to do to get started is pick one of our available locations and then click Get Started.
         You'll be asked to fill out a quick preference sheet, and then you'll rate your preferences for all the popular activities in that country.
         After that, we'll do the rest!
-    </p><br>
+    </p><br><br>
 
     <form action="/locations/preferences">
-        <select name="location" id="location">
+        <select name="location" id="location" required onchange="enableButton()">
             <option value="none" selected disabled>- Select a Location -</option>
             <option value="belize">Belize</option>
             <option value="brazil">Brazil</option>
@@ -20,20 +20,20 @@
         </select>
 
         <br><br>
-        <input type="submit" value="Get Started">
+        <input type="submit" id="startBtn" value="Get Started" disabled>
     </form>
 </div>
 
 <div class="container">
-    <div class="mid">
-        <p>Do you want your itinerary saved, so you can come back it later without having to fill out the survey again?</p>
-        <p>Feel free to create an account!
+    <div class="mid" id="support">
+        <p class="tex">Do you want your itinerary saved, so you can come back it later without having to fill out the survey again?</p><br><br>
+        <p class="tex">Feel free to create an account!
             Or you can click the log in button at the top of the page.
-        </p>
-        <button onclick="location.href='./new'">Create An Account</button>
+        </p><br>
+        <button onclick="location.href='users/new'" id="create">Create An Account</button><br><br><br>
 
-        <p>Do you like our product and want to support us?</p>
-        <p>Now you can! You can join our Gofundme to become one of our supporters!</p>
+        <p class="tex">Do you like our product and want to support us?</p><br><br>
+        <p class="tex">Now you can! You can join our Gofundme to become one of our supporters!</p><br><br>
     </div>
 
     <img src="./images/Beach_Vadim_Troshkin-3x5_b15cd0349508f65a0cb5118c3d83e84d.jpg" alt="beach waves" class="midImg">
@@ -42,11 +42,11 @@
 <div class="container">
     <img src="./images/IMG_0330-1.jpg" alt="waterfall and lake with people sitting on rocks" class="botImg">
 
-    <div class="bot">
-        <p>Want your business to be a part of our state of the art algorithm?</p>
-        <p>Have any suggestions to make our website better?</p>
-        <p>Feel free to contact us!</p>
-        <p>xpeditionapp@gmail.com</p>
+    <div class="bot" id="contact">
+        <p>Want your business to be a part of our state of the art algorithm?</p><br>
+        <p>Have any suggestions to make our website better?</p><br>
+        <p>Feel free to contact us!</p><br>
+        <p>xpeditionapp@gmail.com</p><br>
     </div>
 </div>
 

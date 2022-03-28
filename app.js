@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const sql = require('mysql');
 const session = require('express-session');
 const flash = require('connect-flash');
 const userRoutes = require('./routes/userRoutes');
@@ -19,6 +20,23 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
+
+
+// database
+const con = sql.createConnection( {
+    host: "localhost",
+    user: "root",
+    password: "Password",
+    database: "NHL"
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM player", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+    });
+});
 
 // set up routes
 app.get('/', (req, res) => {

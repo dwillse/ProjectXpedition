@@ -1,19 +1,33 @@
-.background {
-    background: hsla(217, 44%, 35%, 1);
-    background: linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
-    background: -moz-linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
-    background: -webkit-linear-gradient(0deg, hsla(217, 44%, 35%, 1) 0%, hsla(186, 100%, 93%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#325080", endColorstr="#D9FBFF", GradientType=1 );
-}
-
 body {
     font-family: "Verdana";
+    background-color: white;
 }
 
 nav {
     text-align: right;
     background-color: #BBE8FF;
+    margin-left: -5%;
+    height: 180px;
+    width: 105.4%;
+    margin-top: -.5%;
+}
+
+.head {
+    color: black;
+    text-align:right;
+    text-decoration: none;
     padding: 1%;
+    border-radius: 4px;
+}
+
+.head:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.logo {
+    margin-right: 40%;
+    height: 65%;
 }
 
 footer {
@@ -21,11 +35,12 @@ footer {
     background-color: #D3C098;
     padding: 1%;
     position: fixed;
-    width: 97.1%;
+    margin-left: -1%;
+    width: 100%;
     bottom: 0%;
 }
 
-nav a, footer a {
+footer a {
     text-decoration: none;
     font-size: 0.8em;
     color: black;
@@ -34,6 +49,14 @@ nav a, footer a {
 
 button, input[type=submit] {
     background-color: #325080;
+    border: none;
+    color: white;
+    padding: 1% 5% 1% 5%;
+    border-radius: 25px;
+}
+
+input[type=submit]:disabled {
+    background-color: #7F8794;
     border: none;
     color: white;
     padding: 1% 5% 1% 5%;
@@ -54,11 +77,23 @@ select {
 }
 
 .top, .container {
-    margin: 5% 10% 5% 10%;
+    margin: 5% 15% 5% 15%;
 }
 
 .container {
     display: flex;
+}
+
+#about .tex {
+    font-size: large;
+}
+
+#about select {
+    font-size: large;
+}
+
+#about #startBtn {
+    font-size: large;
 }
 
 .mid, .midImg {
@@ -87,7 +122,25 @@ select {
     height: auto;
 }
 
+h1 {
+    font-size: xxx-large;
+}
 
+#support {
+   padding-top: 5%;
+}
+
+#support .tex, #create{
+    font-size: large;
+}
+
+#contact {
+    padding-top: 5%;
+}
+
+#contact {
+    font-size: large;
+}
 
 /*Preference page style start*/
 .center {
@@ -208,7 +261,7 @@ label {
     margin-top: 4%;
     margin-bottom: 4%;
     width: 100%;
-    height: 10%;
+    height: 8%;
 }
 
 #link {
@@ -316,13 +369,45 @@ input:nth-of-type(9):hover ~ i {--l:9}
 input:nth-of-type(10):hover ~ i {--l:10}
 /*input:nth-of-type(N):hover ~ i {--l:N}*/
 
-/* rate pref pictures stuffs */
+/* rate pref pictures stuffs 
 .picture 
 {
-    padding: 2.5% 2.5% 2.5% 2.5%;
+    padding: 3.2%
 }
 
-.picture img, p
+.picture img
 {
-    margin-left: 25%;
+    margin-left: 20%;
+}
+.AttractionText
+{
+    margin-left: 25%
+}
+*/
+
+.columnRate {
+    width: 250px;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.columnRate p {
+    text-align: center;
+}
+
+.columnRate img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#row1, #row2 {
+    text-align: center;
+    width: 100%;
+}
+
+.rowRate {
+    padding-bottom: 20px;
 }
