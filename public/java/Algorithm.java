@@ -15,7 +15,7 @@ public class Algorithm {
 
         ArrayList<Excursion> finalList = new ArrayList<>();
         ArrayList<String> tagsArray = new ArrayList<>();
-		
+
 		/*Adds startingpoint's tag i.e. tag of first excursion recommended, to a list of tags that
 		* will not be recommended again
 		*/
@@ -26,26 +26,30 @@ public class Algorithm {
 
 
 	
-        //Loop should run 4 times to recommend the remaining 4 excursions and put them into finalList
-        for (int i = 0; i < 4; i++) {
-			
-			/*alters loop based on the size of options where options is the list of all possible excursions
-			* able to be recommended
-			* This may not be the best way to do this, but I do think it works for now, it will only let the loop run
-			* for as long as we have options available
-			*/
-			if(options.size() == 3){
-				i++;
-			}else if(options.size() == 2){
-				i += 2;
-			}else if(options.size() == 1){
-				i += 3;
-			}else if(options.size() == 0){
-				break;
-			}
+        
 
-			
-
+		/*counter variable that will be used to specify how many time the loop to look for other excursions should run
+		* should be default set to 4 since we want to recommend 4 excursions other than startingPoint which has already been
+		* recommended
+		*/
+		int counter = 4;
+		/*alters loop based on the size of options where options is the list of all possible excursions
+		* able to be recommended
+		* This may not be the best way to do this, but I do think it works for now, it will only let the loop run
+		* for as long as we have options available
+		*/
+		if(options.size() == 3){
+			counter--;
+		}else if(options.size() == 2){
+			counter -= 2;
+		}else if(options.size() == 1){
+			counter -= 3;
+		}else if(options.size() == 0){
+			counter -= 4;
+		}
+		
+		//Loop should run 4 times to recommend the remaining 4 excursions and put them into finalList
+        for (int i = 0; i < counter; i++) {
 			//TODO logic here still needs to be fixed
             finalList.add(getNextExcursion(user, options, tagsArray));
 
