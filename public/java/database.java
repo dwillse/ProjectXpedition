@@ -29,21 +29,22 @@ class Excursion
     String country;
     String excursion;
     Location location;
-    Tag tags;
+    String tag;
     String website;
     String description;
     double reviews;
 
-    public Excursion(String country, String excursion, Location location, Tag tags, String website, String description,
+    public Excursion(String country, String excursion, Location location, String tag, String website, String description,
             double reviews) {
         this.country = country;
         this.excursion = excursion;
         this.location = location;
-        this.tags = tags;
+        this.tag = tag;
         this.website = website;
         this.description = description;
         this.reviews = reviews;
     }
+
 
     //generated getters/setters can remove setters if needed
     public String getCountry() {
@@ -64,11 +65,11 @@ class Excursion
     public void setLocation(Location location) {
         this.location = location;
     }
-    public Tag getTags() {
-        return tags;
+    public String getTag() {
+        return tag;
     }
-    public void setTags(Tag tags) {
-        this.tags = tags;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
     public String getWebsite() {
         return website;
@@ -90,9 +91,9 @@ class Excursion
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return "Excursion [country=" + country + ", description=" + description + ", excursion=" + excursion
-                + ", location=" + location + ", reviews=" + reviews + ", tags=" + tags + ", website=" + website + "]";
+                + ", location=" + location + ", reviews=" + reviews + ", tags=" + tag + ", website=" + website + "]";
     }
 
     
@@ -112,23 +113,11 @@ method later
 class Tag
 {
     String tag1;
-    String tag2;
-    String tag3;
+    
 
     //Multiple constructors based on number of tags needed
     public Tag(String tag1){
         this.tag1 = tag1;
-    }
-
-    public Tag(String tag1, String tag2){
-        this.tag1 = tag1;
-        this.tag2 = tag2;
-    }
-
-    public Tag(String tag1, String tag2, String tag3){
-        this.tag1 = tag1;
-        this.tag2 = tag2;
-        this.tag3 = tag3;
     }
 
     public String getTag1() {
@@ -136,21 +125,6 @@ class Tag
     }
     public void setTag1(String tag1) {
         this.tag1 = tag1;
-    }
-    public String getTag2() {
-        return tag2;
-    }
-    public void setTag2(String tag2) {
-        this.tag2 = tag2;
-    }
-    public String getTag3() {
-        return tag3;
-    }
-    public void setTag3(String tag3) {
-        this.tag3 = tag3;
-    }
-    public String toString(){
-        return "Tag1: " + tag1 + "\nTag2: " + tag2 + "\nTag3: " + tag3;
     }
 
 }
