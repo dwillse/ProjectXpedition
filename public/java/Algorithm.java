@@ -48,11 +48,7 @@ public class Algorithm {
 		//Loop should run 4 times to recommend the remaining 4 excursions and put them into finalList
         for (int i = 0; i < counter; i++) {
 			
-			//tags array is getting stuck on adding the same tag
-			for (int j = 0; j < finalList.size(); j++) {
-				System.out.println("TAGS ARRAY: " + j);
-				System.out.println(tagsArray.get(j));
-			} 
+			
 
 			//TODO logic here still needs to be fixed
 			//TODO need to test case where user pref list has 2 or more in one list i.e. 2 or more prefs in user.FiveStar
@@ -63,6 +59,14 @@ public class Algorithm {
 
             tagsArray.add(finalList.get(i+1).getTag());
         }
+
+		//DISCUSS: Removes all default excursion that made it through the getNextExcursion method and into the final list
+		for (int i = 0; i < finalList.size(); i++) {
+			if(finalList.get(i).getExcursion().equals("excursion")){
+				finalList.remove(i);
+				i--;
+			}
+		}
 
 
         //FOR TESTING: REMOVE LATER
