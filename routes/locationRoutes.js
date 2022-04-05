@@ -18,7 +18,7 @@ router.get('/ratings' , controller.ratings);
 router.get('/locations/:id' , controller.details);
 
 //handles the results page
-router.get('/locations' , controller.results);
+router.get('/results' , controller.results);
 
 
 module.exports = router;

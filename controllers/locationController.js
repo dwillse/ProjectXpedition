@@ -19,7 +19,7 @@ exports.ratings = (req, res) => {
 exports.details = (req, res, next)=> {
     let id = req.params.id;
     let location = model.findById(id);
-    if(drink) {
+    if(location) {
         res.render('./location/details', {location});
     } else {
     let err = new Error('Cannot find that location' + id);
