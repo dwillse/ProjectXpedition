@@ -29,6 +29,8 @@ exports.details = (req, res, next)=> {
 };
 
 exports.results = (req, res) => {
-    let locations = model.find();
+    /*let locations = model.find();
     res.render('./location/results', {locations});
+    */
+    res.render('./location/results');
 };
