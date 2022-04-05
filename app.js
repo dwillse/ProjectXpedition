@@ -2,7 +2,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const sql = require('mysql');
 const session = require('express-session');
 const flash = require('connect-flash');
 const userRoutes = require('./routes/userRoutes');

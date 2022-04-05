@@ -7,11 +7,11 @@
 
 <body id="login">
 <div class="signIn">
-    <form action="">
+    <form action="/users/login" method="POST">
         <a href="/"><img src="../../images/logo.png" id="logo"></a>
-        <input type="email" class="input-box" placeholder="Email">
-        <input type="password" class="input-box" placeholder="Password">
-        <button onClick="location.href='/'" type="button" class="signUp-button">Sign In</button> <br>
+        <input type="email" name="EMAIL" class="input-box" placeholder="Email">
+        <input type="password" name="PASS" class="input-box" placeholder="Password">
+        <button class="signUp-button">Sign In</button> <br>
         <a href="/users/new" id="link">Create an Account</a>
     </form>
 </div>

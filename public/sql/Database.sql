@@ -295,12 +295,12 @@ CREATE TABLE Users (
 );
 
 INSERT INTO Users (USERID, LNAME, FNAME, EMAIL, PASS)
-VALUES (1, 'B', 'Tom', 'Email', 'Pass');
+VALUES (1, 'B', 'Tom', 'email@gmail.com', 'Pass');
 INSERT INTO Users (USERID, LNAME, FNAME, EMAIL, PASS)
-VALUES (2, 'C', 'Yom', 'Email2', 'Pass2');
+VALUES (2, 'C', 'Yom', 'email2@gmail.com', 'Pass2');
 INSERT INTO Users (USERID, LNAME, FNAME, EMAIL, PASS)
-VALUES (3, 'D', 'Jom', 'Email3', 'Pass3');
+VALUES (3, 'D', 'Jom', 'email3@gmail.com', 'Pass3');
 INSERT INTO Users (USERID, LNAME, FNAME, EMAIL, PASS)
-VALUES (4, 'F', 'Kom', 'Email4', 'Pass4');
+VALUES (4, 'F', 'Kom', 'email4@gmail.com', 'Pass4');
 INSERT INTO Users (USERID, LNAME, FNAME, EMAIL, PASS)
-VALUES (5, 'E', 'Pom', 'Email5', 'Pass5');
+VALUES (5, 'E', 'Pom', 'email5@gmail.com', 'Pass5');
