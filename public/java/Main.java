@@ -30,6 +30,7 @@ public class Main {
         Excursion exc8 = new Excursion("England", "ZSL London Zoo", new Location(51.5353, 0.1534), "zoo", "www.zsllondon.com", "London Zoo is the world's oldest scientific zoo.", 4.3);
         Excursion exc9 = new Excursion("England", "Bournemouth Beach", new Location(50.7190, 1.8512), "beach", "www.bournemouthbeach.com", "Sandy stretch with amusement arcades on 2 piers & backed by cliffside gardens & terrace restaurants.", 4.6);
         Excursion exc10 = new Excursion("England", "Fistral Beach", new Location(50.4165, 5.1002), "beach", "www.fistralbeach.com", "Fistral Beach is in Fistral Bay on the north coast of Cornwall, England, United Kingdom.", 4.7);
+        Excursion exc11 = new Excursion("England", "beach", new Location(51.5, .15), "beach", "web", "des", 4.7);
 
         //adding sample excursions into excursion Array
         excursionArray.add(exc1);
@@ -42,6 +43,7 @@ public class Main {
         excursionArray.add(exc8);
         excursionArray.add(exc9);
         excursionArray.add(exc10);
+        excursionArray.add(exc11);
 
         //creating arrays for sample user
         ArrayList<String> prefArray1 = new ArrayList<>();

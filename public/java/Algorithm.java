@@ -30,37 +30,36 @@ public class Algorithm {
 		* recommended
 		*/
 		int counter = 4;
-		/*alters loop based on the size of options where options is the list of all possible excursions
-		* able to be recommended
-		* This may not be the best way to do this, but I do think it works for now, it will only let the loop run
-		* for as long as we have options available
-		*/
-		if(options.size() == 3){
-			counter--;
-		}else if(options.size() == 2){
-			counter -= 2;
-		}else if(options.size() == 1){
-			counter -= 3;
-		}else if(options.size() == 0){
-			counter -= 4;
-		}
-		
+
 		//Loop should run 4 times to recommend the remaining 4 excursions and put them into finalList
         for (int i = 0; i < counter; i++) {
-			
-			
-
-			//TODO logic here still needs to be fixed
-			//TODO need to test case where user pref list has 2 or more in one list i.e. 2 or more prefs in user.FiveStar
             finalList.add(getNextExcursion(user, options, tagsArray));
-
-			//TODO check to see if final list size == 5 and if not run another method that will recommend already used tags
-
 
             tagsArray.add(finalList.get(i+1).getTag());
         }
 
-		//DISCUSS: Removes all default excursion that made it through the getNextExcursion method and into the final list
+
+		//Removes all default excursions that made it through the getNextExcursion method and into the final list
+		//Note: Should be 0 removals if there were enough options to satisfy the 5 different tag requirement
+		for (int i = 0; i < finalList.size(); i++) {
+			if(finalList.get(i).getExcursion().equals("excursion")){
+				finalList.remove(i);
+				i--;
+			}
+		}
+		
+		//Runs a recommendation method to try and recommend the remaining excursions (up to 5)
+		//Uses duplicate tags that have been already recommended in finalList
+		counter = 5 - finalList.size();
+		tagsArray.clear();
+		for (int i = 0; i < counter; i++) {
+			finalList.add(getNextExcursion(user, options, tagsArray, finalList));
+						
+			tagsArray.add(finalList.get(i+1).getTag());
+		}
+		
+		//Removes all default excursions that made it through the getNextExcursion method and into the final list
+		//Note: Should be 0 removals if there were enough options to satisfy the 5 different tag requirement
 		for (int i = 0; i < finalList.size(); i++) {
 			if(finalList.get(i).getExcursion().equals("excursion")){
 				finalList.remove(i);
@@ -162,101 +161,184 @@ public class Algorithm {
 
     private static Excursion getNextExcursion(UserPreference user, ArrayList<Excursion> exArray, ArrayList<String> tags)
 	{
-        
 		Excursion startingPoint = new Excursion("country", "excursion", new Location(1, 1), "tag", "website", "description", 0);
 		Boolean firstTime = true;
 		Boolean lastTag = false;
+		Boolean badTags = true;
 		ArrayList<String> bestTags = user.getFiveStar();
 
 		//while loop that runs until our starting point which is the excursion we are recommending has been changed
 		while(startingPoint.getReviews() == 0){
 			
-		//this deletes already used tags out of the users preference array
-        for (int i = 0; i < tags.size(); i++) {
-            if(user.getFiveStar().contains(tags.get(i))){
-                user.getFiveStar().remove(tags.get(i));
-            }
-            if(user.getFourStar().contains(tags.get(i))){
-                user.getFourStar().remove(tags.get(i));
-            }
-            if(user.getThreeStar().contains(tags.get(i))){
-                user.getThreeStar().remove(tags.get(i));
-            }
-            if(user.getTwoStar().contains(tags.get(i))){
-                user.getTwoStar().remove(tags.get(i));
-            }
-            if(user.getOneStar().contains(tags.get(i))){
-                user.getOneStar().remove(tags.get(i));
-            }
-        }
+			//this deletes already used tags out of the users preference array
+			for (int i = 0; i < tags.size(); i++) {
+				if(user.getFiveStar().contains(tags.get(i))){
+					user.getFiveStar().remove(tags.get(i));
 
-		//this simply goes down the list to make sure their highest ranked list of tags is used
-		if(user.getFiveStar().isEmpty())
-		{
-			if(user.getFourStar().isEmpty())
+				}
+				if(user.getFourStar().contains(tags.get(i))){
+					user.getFourStar().remove(tags.get(i));
+				}
+				if(user.getThreeStar().contains(tags.get(i))){
+					user.getThreeStar().remove(tags.get(i));
+				}
+				if(user.getTwoStar().contains(tags.get(i))){
+					user.getTwoStar().remove(tags.get(i));
+				}
+				if(user.getOneStar().contains(tags.get(i))){
+					user.getOneStar().remove(tags.get(i));
+				}
+			}
+
+			//this simply goes down the list to make sure their highest ranked list of tags is used
+			if(user.getFiveStar().isEmpty())
 			{
-				if(user.getThreeStar().isEmpty())
+				if(user.getFourStar().isEmpty())
 				{
-					if(user.getTwoStar().isEmpty())
+					if(user.getThreeStar().isEmpty())
 					{
-						bestTags = user.getOneStar();
-						lastTag = true;
+						if(user.getTwoStar().isEmpty())
+						{
+							bestTags = user.getOneStar();
+							lastTag = true;
+						}
+						else
+							bestTags = user.getTwoStar();
 					}
 					else
-						bestTags = user.getTwoStar();
+						bestTags = user.getThreeStar();
 				}
 				else
-					bestTags = user.getThreeStar();
+					bestTags= user.getFourStar();
 			}
-			else
-				bestTags= user.getFourStar();
-		}
 
-		//The simpliest and worst way to find the best tags is just looping 
-        //through each array, we love O(n^2), don't remember a way better off the top of my head
+			//The simpliest and worst way to find the best tags is just looping 
+			//through each array, we love O(n^2), don't remember a way better off the top of my head
 
-		for(int i = 0; i < exArray.size(); i++)
-		{
-			for(int j = 0; j < bestTags.size(); j++)
+			for(int i = 0; i < exArray.size(); i++)
 			{
-                //If I have this correct, if bestTags string is equal to an excursion's tag
-                //it passes
-				System.out.println("--------------------------");
-				System.out.println(bestTags.get(j));
-				System.out.println(exArray.get(i).getTag());
-				if(bestTags.get(j).equals(exArray.get(i).getTag()))
+				for(int j = 0; j < bestTags.size(); j++)
 				{
-                    //then if its the first time your startingPoint now becomes the excursion whose
-                    //tag was equal to the bestTags
-					if(firstTime)
+					//If I have this correct, if bestTags string is equal to an excursion's tag
+					//it passes
+					if(bestTags.get(j).equals(exArray.get(i).getTag()))
 					{
-						startingPoint = exArray.get(i);
-						firstTime = !firstTime;
-					}
-                    
-                    //then if the current excursion's reviews > than the startingPoint excursion's reviews
-                    //the new startingPoint becomes the current excursion
-					if(exArray.get(i).getReviews() > startingPoint.getReviews())
-						startingPoint = exArray.get(i);
-				}		
+						//then if its the first time your startingPoint now becomes the excursion whose
+						//tag was equal to the bestTags
+						if(firstTime)
+						{
+							startingPoint = exArray.get(i);
+							firstTime = !firstTime;
+						}
+						
+						//then if the current excursion's reviews > than the startingPoint excursion's reviews
+						//the new startingPoint becomes the current excursion
+						if(exArray.get(i).getReviews() > startingPoint.getReviews())
+							startingPoint = exArray.get(i);		
+					}		
+				}
+			}
+			
+			//If the starting point has been changed(i.e Contains something to be recommended) adds its tag to bad tags list
+			if(!(startingPoint.getReviews() == 0)){
+				tags.add(startingPoint.getTag());
+				badTags = false;
+			}
+			
+			//if the tag has been through the recommendation process without finding a recommendation, adds it to the list of bad tags
+			if(badTags == true){
+				for (int i = 0; i < bestTags.size(); i++) {
+					tags.add(bestTags.get(i));
+				}
+			}
+			
+			//breaks loop if there are no tags remaining
+			if(lastTag){
+				break;
+			}
+		
+		}
+		return startingPoint;
+
+	}
+
+	
+	/*Overloaded method for getNextExcursion that adds a parameter for the list of already recommended excursions
+	* This method allows for the use of duplicate tags in the recommendation process
+	*/
+	private static Excursion getNextExcursion(UserPreference user, ArrayList<Excursion> exArray, ArrayList<String> tags, ArrayList<Excursion> currExcursions)
+	{
+        
+		Excursion startingPoint = new Excursion("country", "excursion", new Location(1, 1), "tag", "website", "description", 0);
+		Boolean firstTime = true;
+		Boolean lastTag = false;
+		String bestTag = "placeholder";
+		ArrayList<String> dupeTags = new ArrayList<>();
+
+		//Gets rid of any already recommended excursions from the excursion list
+		//Does the same bad thing of deleting the excursions from the list globally though
+		for (int i = 0; i < exArray.size(); i++) {
+			for (int j = 0; j < currExcursions.size(); j++) {
+				if(exArray.get(i).getExcursion().equals(currExcursions.get(j).getExcursion())){
+					exArray.remove(i);
+					i--;
+				}
 			}
 		}
-		
-		//if the tag has been through the recommendation process once, adds it to the list of bad tags
-		for (int i = 0; i < bestTags.size(); i++) {
-			System.out.println("TAGS IN BEST TAGS: " + bestTags.get(i));
-			tags.add(bestTags.get(i));
-		}
-		
-		//TODO could add some kind of different return statement here
-		//breaks loop if there are no tags remaining
-		if(lastTag){
-			break;
-		}
-		
 
+		//list of tags we need to recommend
+		for (int i = 0; i < currExcursions.size(); i++) {
+			dupeTags.add(currExcursions.get(i).getTag());
+		}
+
+
+		int counter = dupeTags.size();
+		//This can be changed to a for loop since we only need to run the insides a certain amount of times
+		//i.e. The number of excursions already recommended
+		for (int j = 0; j < counter; j++)
+		{
+
+			//If dupeTags array is not empty, gets the first item in it and uses it for bestTag
+			if(!(dupeTags.isEmpty())){
+				bestTag = dupeTags.get(0);
+			}
+
+			//The simpliest and worst way to find the best tags is just looping 
+			//through each array, we love O(n^2), don't remember a way better off the top of my head
+
+			for(int i = 0; i < exArray.size(); i++)
+			{
+				
+					//If I have this correct, if bestTags string is equal to an excursion's tag
+					//it passes
+					if(bestTag.equals(exArray.get(i).getTag()))
+					{
+						//then if its the first time your startingPoint now becomes the excursion whose
+						//tag was equal to the bestTags
+						if(firstTime)
+						{
+							startingPoint = exArray.get(i);
+							firstTime = !firstTime;
+						}
+						
+						//then if the current excursion's reviews > than the startingPoint excursion's reviews
+						//the new startingPoint becomes the current excursion
+						if(exArray.get(i).getReviews() > startingPoint.getReviews())
+							startingPoint = exArray.get(i);
+					}		
+			}
+			
+			//if the tag has been through the recommendation process once, adds it to the list of bad tags
+			dupeTags.remove(bestTag);
+				
+			//breaks loop if there are no tags remaining
+			if(lastTag){
+				break;
+			}
 		
-	}
+		}
+	
+	
 
 
 		return startingPoint;
