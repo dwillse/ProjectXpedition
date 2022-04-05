@@ -1,11 +1,4 @@
-locations = [
-    {
-        id: 1,
-        country: 'Belize',
-        content: 'asdfklajsdlfkajs',
-        
-    }
-];
+
 
 window.onload = function hello() {
     let location = window.location.href;
@@ -13,7 +6,9 @@ window.onload = function hello() {
     location = location.charAt(0).toUpperCase() + location.slice(1);
     let pHeader = document.getElementById("pHeader");
     
+    
     if(window.location.href.includes("preferences")) {
+        localStorage.setItem("location", location);
         pHeader.innerHTML = location;
     }
 
@@ -79,8 +74,16 @@ window.onload = function hello() {
     if(window.location.href.includes("results")) {
         let results = window.location.href;
         results = results.substring(results.indexOf("results") + 8, results.length);
-        results = results.split("&", 11);
+        results = results.split("&", 11); //holds (Tag=Rating)
         
+        document.getElementById("resultsHeader").innerHTML += localStorage.getItem("location"); //sets country name in header
+        
+        
+        //take (tag, rating) send it to server to use in algorithm
+
+        //return results on the 5 excursions we're to use
+
+        //dynamically change the excursions on the rightside with the results
         
 
 

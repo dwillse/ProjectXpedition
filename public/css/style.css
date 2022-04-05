@@ -413,15 +413,7 @@ input:nth-of-type(10):hover ~ i {--l:10}
 }
 
 /*  Results page */
-
-
-
-#rightSide {
-    
-}
-
 #holder {
-    background-color: lightblue;
     height: 1000px;
     width: 75%;
     margin-left: auto;
@@ -442,12 +434,11 @@ input:nth-of-type(10):hover ~ i {--l:10}
 }
 
 #holder h2 {
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 
 #leftSide {
-    background-color: gray;
     width: 40%;
     height: 80%;
     float: left;
@@ -455,23 +446,26 @@ input:nth-of-type(10):hover ~ i {--l:10}
 }
 
 #rightSide {
-    background-color: green;
+    border-style: none;
+    border-radius: 25px;
+    box-shadow: 5px 10px 20px #797979;
     width: 40%;
-    height: 80%;
     float: right;
     margin-right: 100px;
+    min-height: 100px;
+    overflow: hidden;
 }
 
 #map {
+    border-style: none;
+    border-radius: 25px;
+    box-shadow: 5px 10px 20px #797979;
     width: 66%;
     height: 300px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
     background-color: white;
-    border-width: 10px;
-    border-color: black;
-    border-style: inset;
 }
 
 #download {
@@ -493,4 +487,8 @@ input:nth-of-type(10):hover ~ i {--l:10}
     width: 100px;
     vertical-align: middle;
     padding: 20px;
+}
+
+#resultsBody {
+    margin-bottom: 100px;
 }
