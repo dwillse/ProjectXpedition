@@ -32,5 +32,10 @@ exports.results = (req, res) => {
     /*let locations = model.find();
     res.render('./location/results', {locations});
     */
+   
+    console.log(req.query);
+    //this is where the alogrithm needs to be implemented 
+    //have to return the results here
     res.render('./location/results');
+    
 };
