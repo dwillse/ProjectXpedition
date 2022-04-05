@@ -1,3 +1,37 @@
 <%- include('../partials/header.ejs') %>
 
+<body>
+    
+
+    <div id="holder">
+
+        <h1>Your Personal Itinerary to "COUNTRY"</h1>
+        <h2>Click Each Location To Find Out More Information</h2>
+
+        <div id="leftSide">
+            <div id="map">
+                MAP
+            </div>
+            <input type="button" value="Download Itineray As PDF" id="download">
+        </div>
+
+
+        <div id="rightSide">
+            <ul style="list-style: none">
+                <li><img src="../images/ruins.jpg" class="resultsImg" >First Attraction</li>
+                <li><img src="../images/ocean.jpg" class="resultsImg">Second Attraction</li>
+                <li><img src="../images/snorkel.jpg" class="resultsImg">Third Attraction</li>
+                <li><img src="../images/caves.jpg" class="resultsImg">Fourth Attraction</li>
+                <li><img src="../images/fine.jpg" class="resultsImg">Fifth Attraction</li>
+            </ul>
+        </div>
+
+
+    </div>
+    
+
+    
+
+</body>
+
 <%- include('../partials/footer.ejs')%>

@@ -75,6 +75,16 @@ window.onload = function hello() {
         
         
     }
+
+    if(window.location.href.includes("results")) {
+        let results = window.location.href;
+        results = results.substring(results.indexOf("results") + 8, results.length);
+        results = results.split("&", 11);
+        
+        
+
+
+    }
 }
 
 function check() {

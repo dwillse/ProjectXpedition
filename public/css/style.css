@@ -411,3 +411,86 @@ input:nth-of-type(10):hover ~ i {--l:10}
 .rowRate {
     padding-bottom: 20px;
 }
+
+/*  Results page */
+
+
+
+#rightSide {
+    
+}
+
+#holder {
+    background-color: lightblue;
+    height: 1000px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    font-family: Verdana;
+}
+
+#holder h1, h2 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Verdana;
+}
+
+#holder h1 {
+    padding-top: 50px;
+}
+
+#holder h2 {
+    margin-bottom: 25px;
+}
+
+
+#leftSide {
+    background-color: gray;
+    width: 40%;
+    height: 80%;
+    float: left;
+    margin-left: 100px;
+}
+
+#rightSide {
+    background-color: green;
+    width: 40%;
+    height: 80%;
+    float: right;
+    margin-right: 100px;
+}
+
+#map {
+    width: 66%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background-color: white;
+    border-width: 10px;
+    border-color: black;
+    border-style: inset;
+}
+
+#download {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: block;
+    border: none;
+    border-radius: 25px;
+    color: black;
+    background-color: lightblue;
+    height: 50px;
+    width: 250px;
+    font-family: Verdana;
+}
+
+.resultsImg {
+    height: 100px;
+    width: 100px;
+    vertical-align: middle;
+    padding: 20px;
+}
