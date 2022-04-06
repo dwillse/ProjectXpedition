@@ -1,6 +1,7 @@
 const model = require("../models/user");
 const db = require("../db");
 const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 
 
 db.query("SELECT * FROM Users", function (err, rows) {
@@ -25,6 +26,11 @@ exports.create = async (req, res, next) => {
     });
     db.query('INSERT INTO Users SET ?', account, (err, res) => {
         if(err) throw err;
+    });
+    let userID = uuidv4();
+    console.log(userID);
+    db.query('UPDATE Users SET USERID = ? Where EMAIL = ?', [userID, account.EMAIL], (err, res) => {
+        if (err) throw err;
     });
     return res.redirect('/');
 };
