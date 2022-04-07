@@ -14,7 +14,6 @@ exports.new = (req, res) => {
 };
 
 // catch errors: validation error and email has already been used
-// Need to give user an id (preferably a random number)
 exports.create = async (req, res, next) => {
     let account = req.body;
     if (account.EMAIL) {
