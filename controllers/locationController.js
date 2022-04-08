@@ -1,4 +1,6 @@
 const model = require('../models/location');
+const java = require('java');
+const exec = require('child_process').exec;
 
 exports.pref = (req, res) => {
     res.render('./location/choosePref');
@@ -34,8 +36,14 @@ exports.results = (req, res) => {
     */
    
     console.log(req.query);
+    
     //this is where the alogrithm needs to be implemented 
     //have to return the results here
+
+    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
+        console.log(stdout);
+    });
+
     res.render('./location/results');
     
 };

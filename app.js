@@ -11,9 +11,12 @@ const { CLIENT_FOUND_ROWS } = require('mysql/lib/protocol/constants/client');
 // create app
 const app = express();
 
-const java = require('java');
-const javaLangSystem = java.import('java.lang.System');
-javaLangSystem.out.printlnSync('pls work');
+//const java = require('java');
+//const exec = require('child_process').exec;
+
+/*exec('java public/java/Test.java', function callback(err, stdout, stderr) {
+    console.log(stdout);
+});*/
 
 // configure app
 let port = 3000;

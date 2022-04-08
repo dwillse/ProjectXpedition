@@ -4,10 +4,10 @@ const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 
 
-db.query("SELECT * FROM Users", function (err, rows) {
+/*db.query("SELECT * FROM Users", function (err, rows) {
     if (err) throw err;
     console.log(rows);
-});
+});*/
 
 exports.new = (req, res) => {
     res.render("./user/create");
