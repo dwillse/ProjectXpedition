@@ -68,7 +68,7 @@ window.onload = function hello() {
             slots[x].style.display = "none";
         }
         
-        
+        document.querySelectorAll('input[type=checkbox]')[0].name = localStorage.getItem('location');
     }
 
     if(window.location.href.includes("results")) {
@@ -77,7 +77,6 @@ window.onload = function hello() {
         results = results.split("&", 11); //holds (Tag=Rating)
         
         document.getElementById("resultsHeader").innerHTML += localStorage.getItem("location"); //sets country name in header
-        
         
         //take (tag, rating) send it to server to use in algorithm
 
