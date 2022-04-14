@@ -3,7 +3,14 @@ const model2 = require("../models/user");
 
 
 exports.pref = (req, res) => {
-    res.render('./location/choosePref');
+    let id = req.session.user;
+    Promise.all([model2.findById(id)])
+    .then(results=> {
+        const [user] = results;
+        res.render('./location/choosePref', {user})
+    })
+    .catch(err=>next(err));
+   
 };
 
 

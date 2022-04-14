@@ -1,8 +1,10 @@
 <%- include('../partials/header.ejs')%>
 
 <div class="center">
-    
-    <h1 id="pHeader"></h1>
+    <% if (user) { %>
+    <h2>Welcome, <%= user.firstName %>. </h2>
+    <h2>Please select some categories the interest you!</h2>
+    <% } %>
     <br>
 
     <form id="preferences" action="/locations/ratings" onchange="check()">
