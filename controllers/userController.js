@@ -1,66 +1,83 @@
-const model = require("../models/user");
-const db = require("../db");
-const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
+const model = require('../models/user');
+const Story = require('../models/location');
 
-
-/*db.query("SELECT * FROM Users", function (err, rows) {
-    if (err) throw err;
-    console.log(rows);
-});*/
-
-exports.new = (req, res) => {
-    res.render("./user/create");
+exports.new = (req, res)=>{
+    return res.render('./user/create');
 };
 
-// catch errors: validation error and email has already been used
-exports.create = async (req, res, next) => {
-    let account = req.body;
-    if (account.EMAIL) {
-        account.EMAIL = account.EMAIL.toLowerCase();
-    }
-    await bcrypt.hash(account.PASS, 10)
-    .then(function(hash) {
-        account.PASS = hash;
-    });
-    db.query('INSERT INTO Users SET ?', account, (err, res) => {
-        if(err) throw err;
-    });
-    let userID = uuidv4();
-    console.log(userID);
-    db.query('UPDATE Users SET USERID = ? Where EMAIL = ?', [userID, account.EMAIL], (err, res) => {
-        if (err) throw err;
-    });
-    return res.redirect('/');
+exports.create = (req, res, next)=>{
+    let user = new model(req.body);
+    user.save()
+    .then(user=> res.redirect('/users/login'))
+    .catch(err=>{
+        if(err.name === 'ValidationError' ) {
+            req.flash('error', err.message);  
+            return res.redirect('/users/new');
+        }
+
+        if(err.code === 11000) {
+            req.flash('error', 'Email has been used');  
+            return res.redirect('/users/new');
+        }
+        
+        next(err);
+    }); 
+   
+    
 };
 
-exports.getUserLogin = (req, res) => {
-    res.render('./user/login');
-};
+exports.getUserLogin = (req, res, next) => {
+        return res.render('./user/login');
+}
 
-// Does not currently work if you put in the incorrect email address
-// - possibly surround if statements in if statement for if email doesnt match existing emails it reloads page
-// catch errors: incorrect email and incorrect password
-exports.login = async (req, res, next) => {
-    let account = req.body;
-    if (account.EMAIL) {
-        account.EMAIL = account.EMAIL.toLowerCase();
-    }
-    db.query("SELECT * FROM Users", account, async function (err, rows) {
-        rows.forEach(async (row) => {
-            if (req.body.EMAIL == `${row.EMAIL}`) {
-                const match = await bcrypt.compare(account.PASS, `${row.PASS}`);
-                if (!match) {
-                    console.log('Incorrect Password');
-                    res.redirect('./login');
+exports.login = (req, res, next)=>{
+  
+        let email = req.body.email;
+        let password = req.body.password;
+        model.findOne({ email: email })
+        .then(user => {
+            if (!user) {
+                console.log('wrong email address');
+                req.flash('error', 'wrong email address');  
+                res.redirect('/users/login');
                 } else {
-                    res.redirect('/');
+                user.comparePassword(password)
+                .then(result=>{
+                    if(result) {
+                        req.session.user = user._id;
+                        req.flash('success', 'You have successfully logged in');
+                        res.redirect('/');
+                } else {
+                    req.flash('error', 'wrong password');      
+                    res.redirect('/users/login');
                 }
-            }
-        });
+                });     
+            }     
+        })
+        .catch(err => next(err));
+};
+
+exports.profile = (req, res, next)=>{
+    let id = req.session.user;
+    Promise.all([model.findById(id)]) 
+    .then(results=> {
+        const [user] = results;
+        res.render('./user/profile', {user});
+    })
+    .catch(err=>next(err));
+};
+
+
+
+exports.logout = (req, res, next)=>{
+    req.session.destroy(err=>{
+        if(err) 
+           return next(err);
+       else
+            res.redirect('/');  
     });
-};
+   
+ };
 
-exports.logout = (req, res, next) => {
 
-};
+

@@ -9,8 +9,24 @@
 <div class="signIn">
     <form action="/users/login" method="POST">
         <a href="/"><img src="../../images/logo.png" id="logo"></a>
-        <input type="email" name="EMAIL" class="input-box" placeholder="Email">
-        <input type="password" name="PASS" class="input-box" placeholder="Password">
+        <% if(errorMessages.length > 0) {%>
+            <% errorMessages.forEach(message=>{%>
+                <div class='error'>
+                    <%=message%>
+                </div>
+                <%});%>
+                    <%}%>
+        
+                        <% if(successMessages.length > 0) {%>
+        
+                            <% successMessages.forEach(message=>{%>
+                                <div class='success'>
+                                    <%=message%>
+                                </div>
+                                <%});%>
+                                    <%}%>
+        <input type="email" name="email" class="input-box" placeholder="Email">
+        <input type="password" name="password" class="input-box" placeholder="Password">
         <button class="signUp-button">Sign In</button> <br>
         <a href="/users/new" id="link">Create an Account</a>
     </form>
