@@ -7,10 +7,32 @@
 </head>
 
 <body id="reg">
-<div class="signUp">
 
+    
+    
+<div class="signUp">
     <form action="/users" method="POST">
+       
+        
         <a href="/"><img src="../../images/logo.png" id="SignUpLogo"></a>
+
+<% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>
+
         <input type="text" name="firstName" class="input-box" placeholder="First Name">
         <input type="text" name="lastName" class="input-box" placeholder="Last Name">
         <input type="email" name="email" class="input-box" placeholder="Email">
