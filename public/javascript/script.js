@@ -1,7 +1,7 @@
 
 
 window.onload = function hello() {
-    let location = window.location.href;
+    /*let location = window.location.href;
     location = location.substring(location.indexOf("=") + 1, location.length);
     location = location.charAt(0).toUpperCase() + location.slice(1);
     let pHeader = document.getElementById("pHeader");
@@ -10,7 +10,7 @@ window.onload = function hello() {
     if(window.location.href.includes("preferences")) {
         localStorage.setItem("location", location);
         pHeader.innerHTML = location;
-    }
+    }*/
 
     if(window.location.href.includes("ratings")) {
         let pref = window.location.href;
@@ -101,7 +101,7 @@ function check() {
 }
 
 
-function selectedPref() {
+/*function selectedPref() {
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', (event) => {
         let checkboxes = document.querySelectorAll('input[name="prefs"]:checked');
@@ -110,7 +110,7 @@ function selectedPref() {
             values.push(checkbox.value);
         });
     });
-}
+}*/
 
 function enableButton() {
     var select = document.getElementById('location');

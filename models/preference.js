@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const preferenceSchema = new Schema( {
-    country: {type: Object},
-    chosen: {type: Object},
+    country: {type: String},
+    chosen: {type: String},
     userName: {type: Schema.Types.ObjectId, ref: 'UserName'}
 },
 {timestamps: true}

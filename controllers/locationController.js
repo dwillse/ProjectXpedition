@@ -3,27 +3,12 @@ const userModel = require("../models/user");
 const preferenceModel = require("../models/preference");
 
 
-// does not work
-exports.country = (req, res, next) => {
-    console.log('hi');
-    let location = new preferenceModel(req.body);
-    location.userName = req.session.user;
-    location.save()
-    .then(location => res.redirect('/locations/pref'))
-    .catch(err => {
-        if (err.name === 'ValidationError') {
-            err.status = 400;
-        }
-        next(err);
-    });
-    console.log(req.body);
-};
-
 exports.pref = (req, res) => {
     let id = req.session.user;
     console.log(req.query);
+    console.log(req.body);
     let country = new preferenceModel();
-    country.country = req.query;
+    country.country = req.body;
     country.save();
     Promise.all([userModel.findById(id)])
     .then(results => {
@@ -33,18 +18,13 @@ exports.pref = (req, res) => {
     .catch(err=>next(err));
 };
 
-// does not work
-exports.select = (req, res, next) => {
-    console.log('select');
-};
+exports.country = (req, res, next) => {
+    console.log('country');
+    console.log(req.body);
+}
 
 exports.ratings = (req, res) => {
     res.render('./location/ratePref');
-};
-
-// does not work
-exports.rate = (req, res, next) => {
-    console.log('ratings');
 };
 
 exports.details = (req, res, next)=> {
@@ -61,8 +41,9 @@ exports.details = (req, res, next)=> {
 
 exports.results = (req, res) => {   
     console.log(req.query);
+    console.log(req.body);
     let prefs = new preferenceModel();
-    prefs.chosen = req.query;
+    prefs.chosen = req.body;
     prefs.save();
     res.render('./location/results');
 };
