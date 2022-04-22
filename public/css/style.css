@@ -271,6 +271,11 @@ label {
 
 /*Sign up page */
 
+.error {
+    text-decoration: underline;
+}
+
+
 #reg{
     margin: 0;
     padding: 0;

@@ -1,22 +1,25 @@
 const model = require('../models/location');
-const java = require('java');
-const exec = require('child_process').exec;
+const model2 = require("../models/user");
+
 
 exports.pref = (req, res) => {
-    res.render('./location/choosePref');
+    let id = req.session.user;
+    Promise.all([model2.findById(id)])
+    .then(results=> {
+        const [user] = results;
+        res.render('./location/choosePref', {user})
+    })
+    .catch(err=>next(err));
+   
 };
 
-/*exports.choose = (req, res, next) => {
 
-};*/
 
 exports.ratings = (req, res) => {
     res.render('./location/ratePref');
 };
 
-/*exports.ratings = (req, res, next) => {
 
-};*/
 
 exports.details = (req, res, next)=> {
     let id = req.params.id;
@@ -30,20 +33,8 @@ exports.details = (req, res, next)=> {
     }
 };
 
-exports.results = (req, res) => {
-    /*let locations = model.find();
-    res.render('./location/results', {locations});
-    */
-   
+exports.results = (req, res) => {   
     console.log(req.query);
-    
-    //this is where the alogrithm needs to be implemented 
-    //have to return the results here
-
-    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
-        console.log(stdout);
-    });
-
     res.render('./location/results');
     
 };

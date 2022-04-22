@@ -9,8 +9,30 @@
     <body>
         <nav>
             <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a><br>
+             <%if(!user) {%>
+            <a href="/users/new" class = "head">Create Account</a>
+            <a href="/users/login" class="head">Login</a>
+            <%}else{%>
             <a href="/locations/preferences" class="head">Preferences</a>
             <a href="/locations/results" class="head">Results</a>
-            <a href="/users/login" class="head">Login</a>
-            <a href="/" class="head">Logout</a>
+            <a href="/users/logout" class="head">Logout</a>
+            <% }%>
         </nav>
+
+        <% if(errorMessages.length > 0) {%>
+            <% errorMessages.forEach(message=>{%>
+                <div class='error'>
+                    <%=message%>
+                </div>
+                <%});%>
+                    <%}%>
+        
+                        <% if(successMessages.length > 0) {%>
+        
+                            <% successMessages.forEach(message=>{%>
+                                <div class='success'>
+                                    <%=message%>
+                                </div>
+                                <%});%>
+                                    <%}%>
+     
