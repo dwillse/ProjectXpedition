@@ -3,6 +3,7 @@ const userModel = require("../models/user");
 const preferenceModel = require("../models/preference");
 
 
+// does not work
 exports.country = (req, res, next) => {
     console.log('hi');
     let location = new preferenceModel(req.body);
@@ -20,6 +21,10 @@ exports.country = (req, res, next) => {
 
 exports.pref = (req, res) => {
     let id = req.session.user;
+    console.log(req.query);
+    let country = new preferenceModel();
+    country.country = req.query;
+    country.save();
     Promise.all([userModel.findById(id)])
     .then(results => {
         const [user] = results;
@@ -28,18 +33,16 @@ exports.pref = (req, res) => {
     .catch(err=>next(err));
 };
 
+// does not work
 exports.select = (req, res, next) => {
-    let prefs = new preferenceModel(req.body);
-    prefs.forEach(pref => {
-        console.log([pref]);
-    });
-    res.redirect('/locations/ratePref');
+    console.log('select');
 };
 
 exports.ratings = (req, res) => {
     res.render('./location/ratePref');
 };
 
+// does not work
 exports.rate = (req, res, next) => {
     console.log('ratings');
 };
@@ -58,5 +61,8 @@ exports.details = (req, res, next)=> {
 
 exports.results = (req, res) => {   
     console.log(req.query);
+    let prefs = new preferenceModel();
+    prefs.chosen = req.query;
+    prefs.save();
     res.render('./location/results');
 };
