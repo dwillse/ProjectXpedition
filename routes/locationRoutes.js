@@ -13,6 +13,8 @@ router.post('/preferences', controller.country);
 //handles the Rate preferences page
 router.get('/ratings', controller.ratings);
 
+router.post('/results', controller.itinerary);
+
 //handles the results page
 router.get('/results', controller.results);
 

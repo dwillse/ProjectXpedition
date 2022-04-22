@@ -3,14 +3,14 @@ const userModel = require("../models/user");
 const preferenceModel = require("../models/preference");
 
 
-exports.pref = (req, res) => {
-    let id = req.session.user;
-    console.log(req.query);
-    console.log(req.body);
+exports.country = (req, res) => {
+    let user = req.session.user;
+    //let id = req.param.id;
     let country = new preferenceModel();
-    country.country = req.body;
+    country.country = req.body.location;
+    //const chosenCountry = country.country;
     country.save();
-    Promise.all([userModel.findById(id)])
+    Promise.all([userModel.findById(user)])
     .then(results => {
         const [user] = results;
         res.render('./location/choosePref', {user})
@@ -18,13 +18,32 @@ exports.pref = (req, res) => {
     .catch(err=>next(err));
 };
 
-exports.country = (req, res, next) => {
+exports.pref = (req, res, next) => {
     console.log(req.body.location);
     res.render('./location/choosePref');
 }
 
 exports.ratings = (req, res) => {
     res.render('./location/ratePref');
+};
+
+exports.results = (req, res) => {
+    res.render('./location/results');
+}
+
+exports.itinerary = (req, res, next) => {   
+    let id = req.param.id;
+    let location = model.findById(id);
+    if(location) {
+        let prefs = new preferenceModel();
+        prefs.chosen = req.body;
+        prefs.save();
+        res.render('./location/results');
+    } else {
+        let err = new Error('Cannot find that location' + id);
+        err.status = 404;
+        next(err);
+    }
 };
 
 exports.details = (req, res, next)=> {
@@ -37,13 +56,4 @@ exports.details = (req, res, next)=> {
         err.status = 404;
         next(err);
     }
-};
-
-exports.results = (req, res) => {   
-    console.log(req.query);
-    console.log(req.body);
-    let prefs = new preferenceModel();
-    prefs.chosen = req.body;
-    prefs.save();
-    res.render('./location/results');
 };

@@ -1,5 +1,5 @@
 
-/*
+
 window.onload = function hello() {
     let location = window.location.href;
     location = location.substring(location.indexOf("=") + 1, location.length);
@@ -110,7 +110,7 @@ function selectedPref() {
             values.push(checkbox.value);
         });
     });
-}*/
+}
 
 function enableButton() {
     var select = document.getElementById('location');

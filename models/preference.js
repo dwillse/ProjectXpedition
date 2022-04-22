@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const preferenceSchema = new Schema( {
     country: {type: String},
-    chosen: {type: String},
+    chosen: {type: Object},
     userName: {type: Schema.Types.ObjectId, ref: 'UserName'}
 },
 {timestamps: true}
