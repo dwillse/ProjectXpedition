@@ -19,8 +19,8 @@ exports.pref = (req, res) => {
 };
 
 exports.country = (req, res, next) => {
-    console.log('country');
-    console.log(req.body);
+    console.log(req.body.location);
+    res.render('./location/choosePref');
 }
 
 exports.ratings = (req, res) => {
