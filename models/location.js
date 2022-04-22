@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const user = require('./user')
 
 const locationSchema = new Schema({
-    Country: {type: String },
-    Excursion: {type: String},
-    Tag: {type: String },
-    Lat: {type: String },
-    Longit: {type: String},
+    country: {type: String},
+    excursion: {type: String},
+    tag: {type: String},
+    lat: {type: String},
+    longit: {type: String},
     website: {type: String},
     description: {type: String},
     reviewScore: {type: String}

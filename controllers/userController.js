@@ -1,5 +1,4 @@
 const model = require('../models/user');
-const Story = require('../models/location');
 
 exports.new = (req, res)=>{
     return res.render('./user/create');
@@ -14,16 +13,12 @@ exports.create = (req, res, next)=>{
             req.flash('error', err.message);  
             return res.redirect('/users/new');
         }
-
         if(err.code === 11000) {
             req.flash('error', 'Email has been used');  
             return res.redirect('/users/new');
         }
-        
         next(err);
     }); 
-   
-    
 };
 
 exports.getUserLogin = (req, res, next) => {
@@ -31,7 +26,6 @@ exports.getUserLogin = (req, res, next) => {
 }
 
 exports.login = (req, res, next)=>{
-  
         let email = req.body.email;
         let password = req.body.password;
         model.findOne({ email: email })
@@ -67,8 +61,6 @@ exports.profile = (req, res, next)=>{
     .catch(err=>next(err));
 };
 
-
-
 exports.logout = (req, res, next)=>{
     req.session.destroy(err=>{
         if(err) 
@@ -76,8 +68,4 @@ exports.logout = (req, res, next)=>{
        else
             res.redirect('/');  
     });
-   
- };
-
-
-
+};

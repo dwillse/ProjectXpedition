@@ -14,8 +14,8 @@ window.onload = function hello() {
 
     if(window.location.href.includes("ratings")) {
         let pref = window.location.href;
-        pref = pref.substring(pref.indexOf("pref"), pref.length);
-        let tags = pref.split("pref=", 11);
+        pref = pref.substring(pref.indexOf("prefs"), pref.length);
+        let tags = pref.split("prefs=", 11);
         tags.shift();
 
         for(var i = 0; i < tags.length; i++) {
@@ -91,7 +91,7 @@ window.onload = function hello() {
 }
 
 function check() {
-    let checkboxes = document.querySelectorAll('input[name="pref"]:checked');
+    let checkboxes = document.querySelectorAll('input[name="prefs"]:checked');
 
     if(checkboxes.length != 0) {
         document.getElementById("btn").disabled = false;
@@ -104,7 +104,7 @@ function check() {
 function selectedPref() {
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', (event) => {
-        let checkboxes = document.querySelectorAll('input[name="pref"]:checked');
+        let checkboxes = document.querySelectorAll('input[name="prefs"]:checked');
         let values = [];
         checkboxes.forEach((checkbox) => {
             values.push(checkbox.value);
