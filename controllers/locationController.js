@@ -3,6 +3,9 @@ const userModel = require("../models/user");
 const preferenceModel = require("../models/preference");
 const prefs = new preferenceModel();
 
+const java = require('java');
+const exec = require('child_process').exec;
+
 
 // post for selecting country and redirecting to choosePref
 exports.country = (req, res) => {
@@ -34,7 +37,13 @@ exports.results = (req, res) => {
 // post for chosen and rated preferences and redirecting to results page
 exports.itinerary = (req, res, next) => {   
     prefs.chosen = req.body;
+    prefs.userName = req.session.user;
     prefs.save();
+    console.log(prefs);
+    console.log('----------');
+    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
+        console.log(stdout);
+    });
     res.render('./location/results');
 };
 
