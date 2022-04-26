@@ -41,7 +41,16 @@ exports.itinerary = (req, res, next) => {
     prefs.save();
     console.log(prefs);
     console.log('----------');
-    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
+    console.log(typeof(prefs.chosen));
+    let stringPref = Object.entries(prefs.chosen);
+    
+    let firstPref = stringPref[0].toString().replace(',', ' ');
+    let secondPref = stringPref[1].toString().replace(',', ' ');
+    let thirdPref = stringPref[2].toString().replace(',', ' ');
+
+    let javaInput = prefs.country + ' ' + firstPref + ' ' + secondPref + ' ' + thirdPref; //ex string: belize Club 4 Ocean 3 Art 2 Beaches 5
+                                                                                        //java args[]: args[0] args[1].... java uses a space as a delimeter
+    exec('java public/java/Test.java ' + javaInput, function callback(err, stdout, stderr) { //javaInput are the args being passed to the file
         console.log(stdout);
     });
     res.render('./location/results');

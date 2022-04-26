@@ -5,6 +5,12 @@ import java.util.ArrayList;
 class Main {
     
     public static void main(String args[]){
+		System.out.println("Printing from Test.java file...\n");
+
+		for(int i = 1; i < args.length - 1; i+= 2) {
+			System.out.println("The user's  preference is: " + args[i] + " : " + args[i + 1]);
+		}
+
 
         //currently instantiating an arraylist based off the excursion class
         //will need to change later
