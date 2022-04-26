@@ -1,6 +1,7 @@
 <%- include('./partials/header.ejs')%>
 
 <div class="top" id="about">
+    
     <h1>Better Travel. Your Way.</h1><br>
     <p class="tex">Xpedition is a travel software that helps you plan your perfect trip based on your preferences and input.
         It's quick, easy, and best of all FREE!
@@ -9,7 +10,7 @@
         After that, we'll do the rest!
     </p><br><br>
 
-    <form action="/locations/preferences">
+    <form action="/locations/preferences" method="POST">
         <select name="location" id="location" required onchange="enableButton()">
             <option value="none" selected disabled>- Select a Location -</option>
             <option value="belize">Belize</option>

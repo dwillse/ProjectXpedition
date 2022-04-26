@@ -7,14 +7,36 @@
 </head>
 
 <body id="reg">
-<div class="signUp">
 
+    
+    
+<div class="signUp">
     <form action="/users" method="POST">
+       
+        
         <a href="/"><img src="../../images/logo.png" id="SignUpLogo"></a>
-        <input type="text" name="FNAME" class="input-box" placeholder="First Name">
-        <input type="text" name="LNAME" class="input-box" placeholder="Last Name">
-        <input type="email" name="EMAIL" class="input-box" placeholder="Email">
-        <input type="password" name="PASS" class="input-box" placeholder="Password">
+
+<% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>
+
+        <input type="text" name="firstName" class="input-box" placeholder="First Name">
+        <input type="text" name="lastName" class="input-box" placeholder="Last Name">
+        <input type="email" name="email" class="input-box" placeholder="Email">
+        <input type="password" name="password" class="input-box" placeholder="Password">
         <!--<input type="password" class="input-box" placeholder="Confirm Password">-->
         <button class="signUp-button">Create Account</button>
         <p id="sign">Have an account? <a href="../users/login" >Sign in</a></p>

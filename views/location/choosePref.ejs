@@ -1,66 +1,66 @@
 <%- include('../partials/header.ejs')%>
 
 <div class="center">
-    <p>Select everything that you have any interest in!
-        Press "Done" when you are finished!
-    </p>
-    <h1 id="pHeader"></h1>
+    <% if (user) { %>
+    <h2>Welcome, <%= user.firstName %>. </h2>
+    <h2>Please select some categories the interest you!</h2>
+    <% } %>
     <br>
 
-    <form id="preferences" action="/locations/ratings" onchange="check()">
+    <form id="preferences" action="/locations/ratings" method="GET" onchange="check()">
         <div class="row">
 
             <!--Club, Bar, Restaurant, Tour, Ocean, Beach, Spa, museum, Park, Art-->
 
             <div class="column">
-                <input type="checkbox" name="pref" id="club" value="Club" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="club" value="Club" style="display: none;"/>
                 <label for="club"><img src="../images/club.jpg" class="checkboxImage" ><br>Club</label>
             </div>
             
             <div class="column">
-                <input type="checkbox" name="pref" id="ocean" value="Ocean" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="ocean" value="Ocean" style="display: none;"/>
                 <label for="ocean"><img src="../images/ocean.jpg" class="checkboxImage"><br>Ocean</label>
             </div>
             
             <div class="column">
-                <input type="checkbox" name="pref" id="bar" value="Bar" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="bar" value="Bar" style="display: none;"/>
                 <label for="bar"><img src="../images/bar.jpeg" class="checkboxImage"><br>Bar</label>
             </div>
 
             <div class="column">
-                <input type="checkbox" name="pref" id="restaurant" value="Restaurant" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="restaurant" value="Restaurant" style="display: none;"/>
                 <label for="restaurant"><img src="../images/rest.jpg" class="checkboxImage"><br>Restaurant</label>
             </div>
 
             <div class="column">
-                <input type="checkbox" name="pref" id="tour" value="Tour" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="tour" value="Tour" style="display: none;"/>
                 <label for="tour"><img src="../images/tour.jpg" class="checkboxImage"><br>Tour</label>
             </div>
         </div>
 
         <div class="row">
             <div class="column">
-                <input type="checkbox" name="pref" id="spa" value="Spa" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="spa" value="Spa" style="display: none;"/>
                 <label for="spa"><img src="../images/spa.jpg" class="checkboxImage"><br>Spa</label>
             </div>
             
             <div class="column">
-                <input type="checkbox" name="pref" id="beaches" value="Beaches" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="beaches" value="Beaches" style="display: none;"/>
                 <label for="beaches"><img src="../images/beach.jpg" class="checkboxImage"><br>Beaches</label>
             </div>
             
             <div class="column">
-                <input type="checkbox" name="pref" id="museums" value="Museums" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="museums" value="Museums" style="display: none;"/>
                 <label for="museums"><img src="../images/museum.jpg" class="checkboxImage"><br>Museums</label>
             </div>
 
             <div class="column">
-                <input type="checkbox" name="pref" id="park" value="Park" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="park" value="Park" style="display: none;"/>
                 <label for="park"><img src="../images/park.jpg" class="checkboxImage"><br>Park</label>
             </div>
 
             <div class="column">
-                <input type="checkbox" name="pref" id="art" value="Art" style="display: none;"/>
+                <input type="checkbox" name="prefs" id="art" value="Art" style="display: none;"/>
                 <label for="art"><img src="../images/art.jpg" class="checkboxImage"><br>Art</label>
             </div>
         </div>

@@ -271,6 +271,11 @@ label {
 
 /*Sign up page */
 
+.error {
+    text-decoration: underline;
+}
+
+
 #reg{
     margin: 0;
     padding: 0;
@@ -498,3 +503,64 @@ ul {
     padding-left: 20px;
 }
 
+
+
+
+/* Details page styling */
+
+#detailsDiv {
+    height: 800px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    font-family: Verdana;
+    border-style: none;
+    border-radius: 25px;
+    box-shadow: 5px 10px 20px #797979;
+    overflow: visible;
+    align-items: center;
+}
+
+#detailsDiv h1 {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 50px;
+}
+
+#detailsContent {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 90%;
+    display: flex;
+}
+
+#detailsImg {
+    flex: left;
+    width: 400px;
+    height: 400px;
+    padding: 50px;
+}
+
+#detailsContent p {
+    width: auto;
+}
+
+#detailsContent h2 {
+    text-align: left;
+}
+
+#websiteBtn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: none;
+    border-radius: 25px;
+    color: black;
+    background-color: lightblue;
+    height: 50px;
+    width: 250px;
+    font-family: Verdana;
+}

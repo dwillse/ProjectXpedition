@@ -1,23 +1,53 @@
 const model = require('../models/location');
+const userModel = require("../models/user");
+const preferenceModel = require("../models/preference");
+const prefs = new preferenceModel();
+
 const java = require('java');
 const exec = require('child_process').exec;
 
-exports.pref = (req, res) => {
-    res.render('./location/choosePref');
+
+// post for selecting country and redirecting to choosePref
+exports.country = (req, res) => {
+    let user = req.session.user;
+    prefs.country = req.body.location;
+    Promise.all([userModel.findById(user)])
+    .then(results => {
+        const [user] = results;
+        res.render('./location/choosePref', {user})
+    })
+    .catch(err=>next(err));
 };
 
-/*exports.choose = (req, res, next) => {
+// get for redirecting to choosePref
+exports.pref = (req, res, next) => {
+    res.render('./location/choosePref');
+}
 
-};*/
-
+// get for redirecting to ratePref
 exports.ratings = (req, res) => {
     res.render('./location/ratePref');
 };
 
-/*exports.ratings = (req, res, next) => {
+// get for redirecting to results
+exports.results = (req, res) => {
+    res.render('./location/results');
+}
 
-};*/
+// post for chosen and rated preferences and redirecting to results page
+exports.itinerary = (req, res, next) => {   
+    prefs.chosen = req.body;
+    prefs.userName = req.session.user;
+    prefs.save();
+    console.log(prefs);
+    console.log('----------');
+    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
+        console.log(stdout);
+    });
+    res.render('./location/results');
+};
 
+// redirects to details page and inserts info into page
 exports.details = (req, res, next)=> {
     let id = req.params.id;
     let location = model.findById(id);
@@ -28,22 +58,4 @@ exports.details = (req, res, next)=> {
         err.status = 404;
         next(err);
     }
-};
-
-exports.results = (req, res) => {
-    /*let locations = model.find();
-    res.render('./location/results', {locations});
-    */
-   
-    console.log(req.query);
-    
-    //this is where the alogrithm needs to be implemented 
-    //have to return the results here
-
-    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
-        console.log(stdout);
-    });
-
-    res.render('./location/results');
-    
 };
