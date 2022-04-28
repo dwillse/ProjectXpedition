@@ -5,15 +5,14 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <div id="holder">
 
-        <h1 id="resultsHeader">Your Personal Itinerary to </h1>
-        <h2>Click Each Location To Find Out More Information</h2>
+        <h1 id="resultsHeader">Your Personal Itinerary to </h1><br><br><br>
 
         <div id="leftSide">
             <div id="map"></div>
             <div id="popup" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
                 <div id="popup-content"></div>
             </div>
-            <input type="button" value="Download Itineray As PDF" id="download">
+            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','This will download the file');">
         </div>
 
 
