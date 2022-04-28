@@ -459,6 +459,7 @@ input:nth-of-type(10):hover ~ i {--l:10}
     margin-right: 100px;
     min-height: 100px;
     overflow: hidden;
+    margin-bottom: 125px;
 }
 
 #map {
@@ -501,6 +502,10 @@ input:nth-of-type(10):hover ~ i {--l:10}
 ul {
     padding-right: 20px;
     padding-left: 20px;
+}
+
+.resultsImg {
+    border-radius: 25px;
 }
 
 

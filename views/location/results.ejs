@@ -10,63 +10,20 @@
 
         <div id="leftSide">
             <div id="map"></div>
-
-            <script>
-
-                let loc = localStorage.getItem('location');
-
-                //Belize 17.1899 N 88.4976 W
-                //Brazil 14.2350 S 51.9253 W
-                //England 52.355 N 1.1743 W
-                //Italy 41.8719 N 12.5675 E
-                //Japan 36.2048 N 138.2529 E
-                //Country Latitude Longitude N(+) S(-) E(+) W(-)
-
-                let startLat = 0;
-                let startLon = 0;
-
-                switch(loc) {
-                    case 'Belize': startLat = 17.1899; startLon = -88.4976; break;
-                    case 'Brazil': startLat = -14.2350; startLon = -51.9253; break;
-                    case 'Japan': startLat = 36.2048; startLon = 138.2529; break;
-                    case 'Italy': startLat = 41.8719; startLon = 12.5675; break;
-                    case 'England': startLat = 52.355; startLon = -1.1743; break;
-                    default: break;
-                }
-
-                
-    
-                 var attribution = new ol.control.Attribution({
-                    collapsible: false
-                });
-    
-                var map = new ol.Map({
-                    controls: ol.control.defaults({attribution: false}).extend([attribution]),
-                    layers: [
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM()
-                        })
-                    ],
-                    target: 'map',
-                    view: new ol.View({
-                        center: ol.proj.fromLonLat([startLon, startLat]),
-                        maxZoom: 18,
-                        zoom: 5
-                    })
-                });
-            </script>
-
+            <div id="popup" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                <div id="popup-content"></div>
+            </div>
             <input type="button" value="Download Itineray As PDF" id="download">
         </div>
 
 
         <div id="rightSide">
             <ul style="list-style: none">
-                <li class="listExc"><img src="" class="resultsImg" >First Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Second Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Third Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Fourth Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Fifth Attraction</li>
+                <li class="listExc"><img src="" class="resultsImg" ><b>First Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Second Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Third Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Fourth Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Fifth Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
             </ul>
         </div>
 
