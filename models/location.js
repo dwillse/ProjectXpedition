@@ -16,9 +16,9 @@ const locationSchema = new Schema({
 //collection name is stories in the database
 module.exports = mongoose.model('Excursions', locationSchema);
 
-const Excursion = mongoose.model('Excursions', locationSchema);
 
-//Excursion.findOne({ ''})
+
+
 
 
 
