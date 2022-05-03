@@ -36,7 +36,8 @@ exports.results = (req, res) => {
 }
 
 // post for chosen and rated preferences and redirecting to results page
-exports.itinerary = (req, res, next) => {   
+// includes running java code
+exports.itinerary = (req, res, next) => {
     let user = req.session.user;
     prefs.chosen = req.body;
     prefs.userName = req.session.user;
@@ -44,7 +45,8 @@ exports.itinerary = (req, res, next) => {
     exec('java public/java/Test.java', function callback(err, stdout, stderr) {
         console.log(stdout);
     });
-    Promise.all([userModel.findById(user), preferenceModel.find(), itineraryModel.findOne().populate('excursion1', 'EXCURSION')])
+    Promise.all([userModel.findById(user), preferenceModel.find(), 
+        itineraryModel.findOne().populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5')])
     .then(results => {
         const [user, preference, itinerary] = results;
         res.render('./location/results', {user, preference, itinerary})
