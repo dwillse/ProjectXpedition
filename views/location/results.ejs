@@ -5,15 +5,20 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <div id="holder">
 
-        <h1 id="resultsHeader">Your Personal Itinerary to </h1>
-        <h2>Click Each Location To Find Out More Information</h2>
+        <% if (user) { %>
+            <h1><%= user.firstName %>'s Personal Itinerary</h1>
+            <h2>Click Each Location To Find Out More Information</h2>
+        <% } %>
 
         <div id="leftSide">
             <div id="map"></div>
 
             <script>
+                
+                
 
                 let loc = localStorage.getItem('location');
+                
 
                 //Belize 17.1899 N 88.4976 W
                 //Brazil 14.2350 S 51.9253 W
@@ -56,17 +61,20 @@
                 });
             </script>
 
+            <div id="popup" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                <div id="popup-content"></div>
+            </div>
             <input type="button" value="Download Itineray As PDF" id="download">
         </div>
 
 
         <div id="rightSide">
             <ul style="list-style: none">
-                <li class="listExc"><img src="" class="resultsImg" >First Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Second Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Third Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Fourth Attraction</li>
-                <li class="listExc"><img src="" class="resultsImg">Fifth Attraction</li>
+                <li class="listExc"><img src="" class="resultsImg" ><b><%= itinerary.excursion1 %></b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Second Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Third Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Fourth Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b>Fifth Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
             </ul>
         </div>
 
