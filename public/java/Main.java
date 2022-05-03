@@ -1,21 +1,44 @@
 import java.util.*;
+import com.mongodb.*;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+import java.util.ArrayList;
+import org.bson.Document;
+
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
 
 //Main method class so we can run/test
 public class Main {
     
     public static void main(String args[]){
 
-        //currently instantiating an arraylist based off the excursion class
-        //will need to change later
-        ArrayList<Excursion> excursionArray = new ArrayList<>();
-
+        //Codec registry for using custom objects
+        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+        
+        //building mongo client connection and getting the xpedition database
+        MongoClientSettings settings = MongoClientSettings.builder()
+            .codecRegistry(pojoCodecRegistry)
+            .build();
+        MongoClient client = MongoClients.create(settings);
+        MongoDatabase database = client.getDatabase("Xpedition");
+        
+        
+        //grabbing each collection needed for the program 
+        MongoCollection<PreferenceHolder> preferences = database.getCollection("preferences", PreferenceHolder.class);
+        MongoCollection<ExcursionHolder> excursions = database.getCollection("excursions", ExcursionHolder.class);
+        MongoCollection<Document> itinerary = database.getCollection("itinerary");
+        
         /*
-        Excursion test = new Excursion("Japan", "Hiking", new Location(35.3606, 138.7274),
-        new Tag("Mountain"), "www.mtfuji.com", "Japan's Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo",
-        4.6);
-        */
-
-        //creating 10 sample excursions
+        * Old hard-coded sample excursions
+        *
         Excursion exc1 = new Excursion("England", "The Broads", new Location(52.6049, 1.6089),
         "park", "www.thebroads.com", "There Broads is a network of mostly navigable rivers and lakes in the English counties of Norfolk and Suffolk.",
         4.7);
@@ -31,39 +54,71 @@ public class Main {
         Excursion exc9 = new Excursion("England", "Bournemouth Beach", new Location(50.7190, 1.8512), "beach", "www.bournemouthbeach.com", "Sandy stretch with amusement arcades on 2 piers & backed by cliffside gardens & terrace restaurants.", 4.6);
         Excursion exc10 = new Excursion("England", "Fistral Beach", new Location(50.4165, 5.1002), "beach", "www.fistralbeach.com", "Fistral Beach is in Fistral Bay on the north coast of Cornwall, England, United Kingdom.", 4.7);
         Excursion exc11 = new Excursion("England", "beach", new Location(51.5, .15), "beach", "web", "des", 4.7);
+        */
 
-        //adding sample excursions into excursion Array
-        excursionArray.add(exc1);
-        excursionArray.add(exc2);
-        excursionArray.add(exc3);
-        excursionArray.add(exc4);
-        excursionArray.add(exc5);
-        excursionArray.add(exc6);
-        excursionArray.add(exc7);
-        excursionArray.add(exc8);
-        excursionArray.add(exc9);
-        excursionArray.add(exc10);
-        excursionArray.add(exc11);
+        //creating new arraylist to hold the excursion collection and a list to hold the list of excursions
+        ArrayList<ExcursionHolder> holder = new ArrayList<>();
+        ArrayList<Excursion> exList = new ArrayList<>();
+        
+        //puts the excursions collection into a holder arraylist to be used to transfer to the final list
+        excursions.find(new Document(), ExcursionHolder.class).into(holder);
+        
+        //turns the list of excursion objects from the mongo collection into an arraylist to be passed to the algorithm
+        for (int i = 0; i < holder.size(); i++) {
+            exList.add(new Excursion(holder.get(i).getCountry(), holder.get(i).getExcursion(), new Location(holder.get(i).getLat(),
+                    holder.get(i).getLongit()), holder.get(i).getTag(), holder.get(i).getWebsite(), holder.get(i).getDescription(), holder.get(i).getReviews()));
+        }
+        
 
-        //creating arrays for sample user
+        //creating all arrayLists to hold user preferences
+        String userName = "Corrin";
         ArrayList<String> prefArray1 = new ArrayList<>();
         ArrayList<String> prefArray2 = new ArrayList<>();
         ArrayList<String> prefArray3 = new ArrayList<>();
         ArrayList<String> prefArray4 = new ArrayList<>();
         ArrayList<String> prefArray5 = new ArrayList<>();
-        prefArray1.add("park");
-        prefArray2.add("museum");
-        prefArray3.add("zoo");
-        prefArray4.add("beach");
-        prefArray5.add("castle");
-
-        //creating a sample user
+        ArrayList<PreferenceHolder> prefHolder = new ArrayList<>();
+        
+        //taking the collection of preferences from mongo and putting it into preference arraylist
+        preferences.find(new Document(), PreferenceHolder.class).into(prefHolder);
+        
+        for (int i = 0; i < prefHolder.size(); i++) {
+            //making sure name is not null and if it is skips loop iteration
+            if(prefHolder.get(i).getUser() == null){
+                
+            //gets the correct user's name and adds their preferences to the preference arrays that will build the User java object
+            }else if(prefHolder.get(i).getUser().equals(userName)){
+                 prefArray5.add(prefHolder.get(i).getChosen());
+            }
+            
+        }
+  
+        //Test to see whats in each pref array
+        System.out.println(prefArray5);
+        System.out.println(prefArray4);
+        System.out.println(prefArray3);
+        System.out.println(prefArray2);
+        System.out.println(prefArray1);
+        //creating a user object to be passed to the algorithm
         UserPreference user = new UserPreference(prefArray5, prefArray4, prefArray3, prefArray2, prefArray1);
 
-        Algorithm.CallAlgorithim(user, excursionArray);
-        //System.out.println(Algorithm.CallAlgorithim(user, excursionArray));
+        //Call Algorithm here(would run exactly like normal)
+        ArrayList<Excursion> finalList = Algorithm.CallAlgorithim(user, exList);
+        
 
-
+        //Store Algorithm's return to MongoDB here
+        for (int i = 0; i < finalList.size(); i++) {
+            Document excurs = new Document("country", finalList.get(i).getCountry())
+                                            .append("excursion", finalList.get(i).getExcursion())
+                                            .append("tag", finalList.get(i).getTag())
+                                            .append("lat", finalList.get(i).getLocation().getLatitude())
+                                            .append("longit", finalList.get(i).getLocation().getLongitude())
+                                            .append("website", finalList.get(i).getWebsite())
+                                            .append("description", finalList.get(i).getDescription())
+                                            .append("reviews", finalList.get(i).getReviews());
+            
+            itinerary.insertOne(excurs);
+        }
 
     }
 }
