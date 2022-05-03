@@ -1,6 +1,7 @@
 const model = require('../models/location');
 const userModel = require("../models/user");
 const preferenceModel = require("../models/preference");
+const itineraryModel = require('../models/itinerary');
 const prefs = new preferenceModel();
 
 const java = require('java');
@@ -36,15 +37,19 @@ exports.results = (req, res) => {
 
 // post for chosen and rated preferences and redirecting to results page
 exports.itinerary = (req, res, next) => {   
+    let user = req.session.user;
     prefs.chosen = req.body;
     prefs.userName = req.session.user;
     prefs.save();
-    console.log(prefs);
-    console.log('----------');
     exec('java public/java/Test.java', function callback(err, stdout, stderr) {
         console.log(stdout);
     });
-    res.render('./location/results');
+    Promise.all([userModel.findById(user), preferenceModel.find(), itineraryModel.findOne().populate('excursion1', 'EXCURSION')])
+    .then(results => {
+        const [user, preference, itinerary] = results;
+        res.render('./location/results', {user, preference, itinerary})
+    })
+    .catch(err=>next(err));
 };
 
 // redirects to details page and inserts info into page

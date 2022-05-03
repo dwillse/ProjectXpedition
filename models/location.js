@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 const user = require('./user')
 
 const locationSchema = new Schema({
-    country: {type: String},
-    excursion: {type: String},
-    tag: {type: String},
-    lat: {type: String},
-    longit: {type: String},
-    website: {type: String},
-    description: {type: String},
-    reviewScore: {type: String}
+    COUNTRY: {type: String},
+    EXCURSION: {type: String},
+    TAG: {type: String},
+    LAT: {type: String},
+    LONGIT: {type: String},
+    WEBSITE: {type: String},
+    DESCR: {type: String},
+    REVIEWSCORE: {type: String}
 }
 );
 //collection name is stories in the database

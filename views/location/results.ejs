@@ -5,8 +5,10 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <div id="holder">
 
-        <h1 id="resultsHeader">Your Personal Itinerary to </h1>
-        <h2>Click Each Location To Find Out More Information</h2>
+        <% if (user) { %>
+            <h1><%= user.firstName %>'s Personal Itinerary</h1>
+            <h2>Click Each Location To Find Out More Information</h2>
+        <% } %>
 
         <div id="leftSide">
             <div id="map"></div>
@@ -68,7 +70,7 @@
 
         <div id="rightSide">
             <ul style="list-style: none">
-                <li class="listExc"><img src="" class="resultsImg" ><b>First Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
+                <li class="listExc"><img src="" class="resultsImg" ><b><%= itinerary.excursion1 %></b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
                 <li class="listExc"><img src="" class="resultsImg"><b>Second Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
                 <li class="listExc"><img src="" class="resultsImg"><b>Third Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
                 <li class="listExc"><img src="" class="resultsImg"><b>Fourth Attraction</b><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere tincidunt condimentum. Aliquam ex tellus, dapibus ac lacus non, fringilla pretium urna. Fusce ut fermentum leo...</p></li>
