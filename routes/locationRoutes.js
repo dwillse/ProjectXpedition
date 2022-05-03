@@ -8,18 +8,18 @@ const router = express.Router();
 //Handles the choosing preferences page
 router.get('/preferences', isLoggedIn, controller.pref);
 
-router.post('/preferences', controller.country);
+router.post('/preferences', isLoggedIn, controller.country);
 
 //handles the Rate preferences page
-router.get('/ratings', controller.ratings);
+router.get('/ratings', isLoggedIn, controller.ratings);
 
 router.post('/results', controller.itinerary);
 
 //handles the results page
-router.get('/results', controller.results);
+router.get('/results', isLoggedIn, controller.results);
 
 //Handles the details page
-router.get('/locations/:id' , controller.details);
+router.get('/locations/:id', isLoggedIn, controller.details);
 
 
 module.exports = router;

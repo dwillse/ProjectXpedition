@@ -569,3 +569,43 @@ ul {
     width: 250px;
     font-family: Verdana;
 }
+
+
+.error {
+    background: rgba(255, 102, 51, 0.7);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.success {
+    background: rgba(108, 192, 112, 0.7);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+
+.profile {
+    background-color: lightblue;
+    margin: 5% 10% 10% 10%;
+    padding: 1% 1% 1% 1%;
+    border-style:solid;
+    border-radius: 25px;
+    border-color: black;
+    border-width: .5px;
+    box-shadow: 5px 10px 20px #797979;
+}
+
+.profileTxt {
+    font-size: large;
+    text-align: center;
+    padding-left: 5% 5% 5% 5%;
+}
+
+.schedules {
+    text-align: center;
+    list-style-position: inside;
+}

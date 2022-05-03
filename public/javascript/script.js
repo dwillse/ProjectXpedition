@@ -68,12 +68,12 @@ window.onload = function hello() {
         document.querySelectorAll('input[type=checkbox]')[0].name = localStorage.getItem('location');
     }
 
-    if(window.location.href.includes("results")) {
+    /*if(window.location.href.includes("results")) {
         let results = window.location.href;
         results = results.substring(results.indexOf("results") + 8, results.length);
         results = results.split("&", 11); //holds (Tag=Rating)
         
-        document.getElementById("resultsHeader").innerHTML += localStorage.getItem("location"); //sets country name in header
+        //document.getElementById("resultsHeader").innerHTML += localStorage.getItem("location"); //sets country name in header
 
 
         //start loop
@@ -178,7 +178,7 @@ window.onload = function hello() {
 
     } //end of results page if statement
 
-
+*/
 
 }
 
