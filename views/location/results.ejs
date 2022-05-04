@@ -13,35 +13,34 @@
         <div id="leftSide">
             <div id="map"></div>
 
-            <div id="exc1" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                <div id="exc1-content"></div>
-            </div>
-
-            <div id="exc2" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                <div id="exc2-content"></div>
-            </div>
+            <div id="exc1" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;"></div>
             
-
+            
             
                
-            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','This will download the file');">
+            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','<%= itinerary.excursion1.EXCURSION %>\n<%= itinerary.excursion1.WEBSITE %>\n\n<%= itinerary.excursion2.EXCURSION %>\n<%= itinerary.excursion2.WEBSITE %>\n\n<%= itinerary.excursion3.EXCURSION %>\n<%= itinerary.excursion3.WEBSITE %>\n\n<%= itinerary.excursion4.EXCURSION %>\n<%= itinerary.excursion4.WEBSITE %>\n\n<%= itinerary.excursion5.EXCURSION %>\n<%= itinerary.excursion5.WEBSITE %>\n\n');">
         </div>
 
 
         <div id="rightSide">
             <ul style="list-style: none">
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion1.excursion %></b><p><%= itinerary.excursion1.description %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion2.excursion %></b><p><%= itinerary.excursion2.description %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion3.excursion %></b><p><%= itinerary.excursion3.description %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion4.excursion %></b><p><%= itinerary.excursion4.description %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion5.excursion %></b><p><%= itinerary.excursion5.description %></p></li>
+                <li class="listExc" onclick="showExc1()"><img src="" class="resultsImg"><a href='<%= itinerary.excursion1.website %>' target="_blank" style="text-decoration: none; color: black;"><b><%= itinerary.excursion1.excursion %></b></a><p><%= itinerary.excursion1.description %></p></li>
+                <li class="listExc" onclick="showExc2()"><img src="" class="resultsImg"><a href='<%= itinerary.excursion2.website %>' target="_blank" style="text-decoration: none; color: black;"><b><%= itinerary.excursion2.excursion %></b></a><p><%= itinerary.excursion2.description %></p></li>
+                <li class="listExc" onclick="showExc3()"><img src="" class="resultsImg"><a href='<%= itinerary.excursion3.website %>' target="_blank" style="text-decoration: none; color: black;"><b><%= itinerary.excursion3.excursion %></b></a><p><%= itinerary.excursion3.description %></p></li>
+                <li class="listExc" onclick="showExc4()"><img src="" class="resultsImg"><a href='<%= itinerary.excursion4.website %>' target="_blank" style="text-decoration: none; color: black;"><b><%= itinerary.excursion4.excursion %></b></a><p><%= itinerary.excursion4.description %></p></li>
+                <li class="listExc" onclick="showExc5()"><img src="" class="resultsImg"><a href='<%= itinerary.excursion5.website %>' target="_blank" style="text-decoration: none; color: black;"><b><%= itinerary.excursion5.excursion %></b></a><p><%= itinerary.excursion5.description %></p></li>
             </ul>
         </div>
 
 
             <script>
                 
-                
+                let images = document.getElementsByTagName("img");
+                images[1].src = '<%= itinerary.excursion1.IMAGE %>';
+                images[2].src = '<%= itinerary.excursion2.IMAGE %>';
+                images[3].src = '<%= itinerary.excursion3.IMAGE %>';
+                images[4].src = '<%= itinerary.excursion4.IMAGE %>';
+                images[5].src = '<%= itinerary.excursion5.IMAGE %>';
 
                 let loc = localStorage.getItem('location');
                 
@@ -103,7 +102,8 @@
                     source: new ol.source.Vector({
                         features: [
                             new ol.Feature({
-                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc1Long, exc1Lat]))
+                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc1Long, exc1Lat])),
+                                name: 'Null Island'
                             }), 
                             new ol.Feature({
                                 geometry: new ol.geom.Point(ol.proj.fromLonLat([exc2Long, exc2Lat]))
@@ -124,20 +124,41 @@
         
                 map.addLayer(points);
 
+                
                 var container = document.getElementById('exc1');
-                document.getElementById('exc1-content').innerHTML = '<b><%= itinerary.excursion1.EXCURSION %></b>';
        
                 var overlay1 = new ol.Overlay({
                     element: container,
-                    autoPan: true,
-                    autoPanAnimation: {
-                        duration: 250
-                    }
                 });
                 map.addOverlay(overlay1);
-                overlay1.setPosition(ol.proj.fromLonLat([exc1Long, exc1Lat]));
-                
 
+
+                function showExc1() {
+                    container.innerHTML = '<b><%= itinerary.excursion1.EXCURSION %></b>';
+                    overlay1.setPosition(ol.proj.fromLonLat([exc1Long, exc1Lat]));
+                }
+
+                function showExc2() {
+                    container.innerHTML = '<b><%= itinerary.excursion2.EXCURSION %></b>';
+                    overlay1.setPosition(ol.proj.fromLonLat([exc2Long, exc2Lat]));
+                }
+
+                function showExc3() {
+                    container.innerHTML = '<b><%= itinerary.excursion3.EXCURSION %></b>';
+                    overlay1.setPosition(ol.proj.fromLonLat([exc3Long, exc3Lat]));
+                }
+
+                function showExc4() {
+                    container.innerHTML = '<b><%= itinerary.excursion4.EXCURSION %></b>';
+                    overlay1.setPosition(ol.proj.fromLonLat([exc4Long, exc4Lat]));
+                }
+
+                function showExc5() {
+                    container.innerHTML = '<b><%= itinerary.excursion5.EXCURSION %></b>';
+                    overlay1.setPosition(ol.proj.fromLonLat([exc5Long, exc5Lat]));
+                }
+                
+                
 
 
                 
