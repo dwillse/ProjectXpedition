@@ -10,7 +10,8 @@ const locationSchema = new Schema({
     LONGIT: {type: String},
     WEBSITE: {type: String},
     DESCR: {type: String},
-    REVIEWSCORE: {type: String}
+    REVIEWSCORE: {type: String},
+    IMAGE: {type: String}
 }
 );
 //collection name is stories in the database
