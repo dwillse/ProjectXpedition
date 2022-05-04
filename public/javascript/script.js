@@ -28,16 +28,16 @@ window.onload = function hello() {
             pTags[i].innerHTML = tags[i];
             let imageURL = "";
             switch(tags[i]) {
-                case 'Club': imageURL = '../images/club.jpg'; break;
-                case 'Ocean': imageURL = '../images/ocean.jpg'; break;
-                case 'Bar': imageURL = '../images/bar.jpeg'; break;
-                case 'Restaurant': imageURL = '../images/rest.jpg'; break;
-                case 'Tour': imageURL = '../images/tour.jpg'; break;
-                case 'Spa': imageURL = '../images/spa.jpg'; break;
-                case 'Beaches': imageURL = '../images/beach.jpg'; break;
-                case 'Museums': imageURL = '../images/museum.jpg'; break;
-                case 'Park': imageURL = '../images/park.jpg'; break;
-                case 'Art': imageURL ='../images/art.jpg'; break;
+                case 'club': imageURL = '../images/club.jpg'; break;
+                case 'ocean': imageURL = '../images/ocean.jpg'; break;
+                case 'bar': imageURL = '../images/bar.jpeg'; break;
+                case 'restaurant': imageURL = '../images/rest.jpg'; break;
+                case 'tour': imageURL = '../images/tour.jpg'; break;
+                case 'spa': imageURL = '../images/spa.jpg'; break;
+                case 'beaches': imageURL = '../images/beach.jpg'; break;
+                case 'museums': imageURL = '../images/museum.jpg'; break;
+                case 'park': imageURL = '../images/park.jpg'; break;
+                case 'art': imageURL ='../images/art.jpg'; break;
                 default: break;
             }
             let pictures = document.getElementsByTagName("img");

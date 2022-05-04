@@ -42,9 +42,22 @@ exports.itinerary = (req, res, next) => {
     prefs.chosen = req.body;
     prefs.userName = req.session.user;
     prefs.save();
-    exec('java public/java/Test.java', function callback(err, stdout, stderr) {
+
+    let stringPref = Object.entries(prefs.chosen);
+    console.log(stringPref.toString() + ',');
+    stringPref = stringPref.toString() + ',';
+    for (let i = 0; i < 5; i++) {
+        stringPref = stringPref.replace(',1,', ' ').replace(',2,', ' ').replace(',3,', ' ').replace(',4,', ' ').replace(',5,', ' ');
+    }
+    stringPref = stringPref.trim();
+    console.log(stringPref);
+    console.log(user);
+    console.log('java -jar public/java/xped/XpeditionGradleTest.jar' + ' ' + user + ' ' + stringPref);
+
+    exec('java -jar public/java/xped/XpeditionGradleTest.jar 6258847ba05969b6cc51708d beaches bar', function callback(err, stdout, stderr) {
         console.log(stdout);
     });
+
     Promise.all([userModel.findById(user), preferenceModel.find(), 
         itineraryModel.findOne().populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5')])
     .then(results => {
