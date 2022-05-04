@@ -13,6 +13,32 @@
         <div id="leftSide">
             <div id="map"></div>
 
+            <div id="exc1" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                <div id="exc1-content"></div>
+            </div>
+
+            <div id="exc2" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                <div id="exc2-content"></div>
+            </div>
+            
+
+            
+               
+            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','This will download the file');">
+        </div>
+
+
+        <div id="rightSide">
+            <ul style="list-style: none">
+                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion1.EXCURSION %></b><p><%= itinerary.excursion1.DESCR %></p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion2.EXCURSION %></b><p><%= itinerary.excursion2.DESCR %></p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion3.EXCURSION %></b><p><%= itinerary.excursion3.DESCR %></p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion4.EXCURSION %></b><p><%= itinerary.excursion4.DESCR %></p></li>
+                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion5.EXCURSION %></b><p><%= itinerary.excursion5.DESCR %></p></li>
+            </ul>
+        </div>
+
+
             <script>
                 
                 
@@ -29,9 +55,10 @@
 
                 let startLat = 0;
                 let startLon = 0;
+                let zoomNum = 5;
 
                 switch(loc) {
-                    case 'Belize': startLat = 17.1899; startLon = -88.4976; break;
+                    case 'Belize': startLat = 17.1899; startLon = -88.4976; zoomNum = 8; break;
                     case 'Brazil': startLat = -14.2350; startLon = -51.9253; break;
                     case 'Japan': startLat = 36.2048; startLon = 138.2529; break;
                     case 'Italy': startLat = 41.8719; startLon = 12.5675; break;
@@ -56,28 +83,70 @@
                     view: new ol.View({
                         center: ol.proj.fromLonLat([startLon, startLat]),
                         maxZoom: 18,
-                        zoom: 5
+                        zoom: zoomNum
                     })
                 });
+                
+                //this adds a new marker will need 5 of these
+                var exc1Lat = parseFloat('<%= itinerary.excursion1.LAT %>');
+                var exc1Long = parseFloat('<%= itinerary.excursion1.LONGIT %>');
+                var exc2Lat = parseFloat('<%= itinerary.excursion2.LAT %>');
+                var exc2Long = parseFloat('<%= itinerary.excursion2.LONGIT %>');
+                var exc3Lat = parseFloat('<%= itinerary.excursion3.LAT %>');
+                var exc3Long = parseFloat('<%= itinerary.excursion3.LONGIT %>');
+                var exc4Lat = parseFloat('<%= itinerary.excursion4.LAT %>');
+                var exc4Long = parseFloat('<%= itinerary.excursion4.LONGIT %>');
+                var exc5Lat = parseFloat('<%= itinerary.excursion5.LAT %>');
+                var exc5Long = parseFloat('<%= itinerary.excursion5.LONGIT %>');
+
+                var points = new ol.layer.Vector({
+                    source: new ol.source.Vector({
+                        features: [
+                            new ol.Feature({
+                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc1Long, exc1Lat]))
+                            }), 
+                            new ol.Feature({
+                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc2Long, exc2Lat]))
+                            }),
+                            new ol.Feature({
+                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc3Long, exc3Lat]))
+                            }), 
+                            new ol.Feature({
+                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc4Long, exc4Lat]))
+                            }), 
+                            new ol.Feature({
+                                geometry: new ol.geom.Point(ol.proj.fromLonLat([exc5Long, exc5Lat]))
+                            })
+                        ]
+                    })
+                });
+
+        
+                map.addLayer(points);
+
+                var container = document.getElementById('exc1');
+                document.getElementById('exc1-content').innerHTML = '<b><%= itinerary.excursion1.EXCURSION %></b>';
+       
+                var overlay1 = new ol.Overlay({
+                    element: container,
+                    autoPan: true,
+                    autoPanAnimation: {
+                        duration: 250
+                    }
+                });
+                map.addOverlay(overlay1);
+                overlay1.setPosition(ol.proj.fromLonLat([exc1Long, exc1Lat]));
+
+                document.getElementById('exc2-content').innerHTML = '<b><%= itinerary.excursion2.EXCURSION %></b>';
+                
+
+
+
+                
+                
             </script>
 
-            <div id="popup" class="ol-popup" style="font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                <div id="popup-content"></div>
-            </div>
-            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','This will download the file');">
-        </div>
-
-
-        <div id="rightSide">
-            <ul style="list-style: none">
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion1.EXCURSION %></b><p><%= itinerary.excursion1.DESCR %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion2.EXCURSION %></b><p><%= itinerary.excursion2.DESCR %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion3.EXCURSION %></b><p><%= itinerary.excursion3.DESCR %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion4.EXCURSION %></b><p><%= itinerary.excursion4.DESCR %></p></li>
-                <li class="listExc"><img src="" class="resultsImg"><b><%= itinerary.excursion5.EXCURSION %></b><p><%= itinerary.excursion5.DESCR %></p></li>
-            </ul>
-        </div>
-
+         
 
     </div>
     
