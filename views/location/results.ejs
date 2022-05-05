@@ -18,7 +18,7 @@
             
             
                
-            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','<%= itinerary.excursion1.EXCURSION %>\n<%= itinerary.excursion1.WEBSITE %>\n\n<%= itinerary.excursion2.EXCURSION %>\n<%= itinerary.excursion2.WEBSITE %>\n\n<%= itinerary.excursion3.EXCURSION %>\n<%= itinerary.excursion3.WEBSITE %>\n\n<%= itinerary.excursion4.EXCURSION %>\n<%= itinerary.excursion4.WEBSITE %>\n\n<%= itinerary.excursion5.EXCURSION %>\n<%= itinerary.excursion5.WEBSITE %>\n\n');">
+            <input type="button" value="Download Itineray As PDF" id="download" onclick="download('Itinerary.txt','<%= itinerary.excursion1.excursion %>\n<%= itinerary.excursion1.website %>\n\n<%= itinerary.excursion2.excursion %>\n<%= itinerary.excursion2.website %>\n\n<%= itinerary.excursion3.excursion %>\n<%= itinerary.excursion3.website %>\n\n<%= itinerary.excursion4.excursion %>\n<%= itinerary.excursion4.website %>\n\n<%= itinerary.excursion5.excursion %>\n<%= itinerary.excursion5.website %>\n\n');">
         </div>
 
 
@@ -36,11 +36,11 @@
             <script>
                 
                 let images = document.getElementsByTagName("img");
-                images[1].src = '<%= itinerary.excursion1.IMAGE %>';
-                images[2].src = '<%= itinerary.excursion2.IMAGE %>';
-                images[3].src = '<%= itinerary.excursion3.IMAGE %>';
-                images[4].src = '<%= itinerary.excursion4.IMAGE %>';
-                images[5].src = '<%= itinerary.excursion5.IMAGE %>';
+                images[1].src = '<%= itinerary.excursion1.image %>';
+                images[2].src = '<%= itinerary.excursion2.image %>';
+                images[3].src = '<%= itinerary.excursion3.image %>';
+                images[4].src = '<%= itinerary.excursion4.image %>';
+                images[5].src = '<%= itinerary.excursion5.image %>';
 
                 let loc = localStorage.getItem('location');
                 
@@ -87,16 +87,16 @@
                 });
                 
                 //this adds a new marker will need 5 of these
-                var exc1Lat = parseFloat('<%= itinerary.excursion1.LAT %>');
-                var exc1Long = parseFloat('<%= itinerary.excursion1.LONGIT %>');
-                var exc2Lat = parseFloat('<%= itinerary.excursion2.LAT %>');
-                var exc2Long = parseFloat('<%= itinerary.excursion2.LONGIT %>');
-                var exc3Lat = parseFloat('<%= itinerary.excursion3.LAT %>');
-                var exc3Long = parseFloat('<%= itinerary.excursion3.LONGIT %>');
-                var exc4Lat = parseFloat('<%= itinerary.excursion4.LAT %>');
-                var exc4Long = parseFloat('<%= itinerary.excursion4.LONGIT %>');
-                var exc5Lat = parseFloat('<%= itinerary.excursion5.LAT %>');
-                var exc5Long = parseFloat('<%= itinerary.excursion5.LONGIT %>');
+                var exc1Lat = parseFloat('<%= itinerary.excursion1.lat %>');
+                var exc1Long = parseFloat('<%= itinerary.excursion1.longit %>');
+                var exc2Lat = parseFloat('<%= itinerary.excursion2.lat %>');
+                var exc2Long = parseFloat('<%= itinerary.excursion2.longit %>');
+                var exc3Lat = parseFloat('<%= itinerary.excursion3.lat %>');
+                var exc3Long = parseFloat('<%= itinerary.excursion3.longit %>');
+                var exc4Lat = parseFloat('<%= itinerary.excursion4.lat %>');
+                var exc4Long = parseFloat('<%= itinerary.excursion4.longit %>');
+                var exc5Lat = parseFloat('<%= itinerary.excursion5.lat %>');
+                var exc5Long = parseFloat('<%= itinerary.excursion5.longit %>');
 
                 var points = new ol.layer.Vector({
                     source: new ol.source.Vector({
@@ -134,27 +134,27 @@
 
 
                 function showExc1() {
-                    container.innerHTML = '<b><%= itinerary.excursion1.EXCURSION %></b>';
+                    container.innerHTML = '<b><%= itinerary.excursion1.excursion %></b>';
                     overlay1.setPosition(ol.proj.fromLonLat([exc1Long, exc1Lat]));
                 }
 
                 function showExc2() {
-                    container.innerHTML = '<b><%= itinerary.excursion2.EXCURSION %></b>';
+                    container.innerHTML = '<b><%= itinerary.excursion2.excursion %></b>';
                     overlay1.setPosition(ol.proj.fromLonLat([exc2Long, exc2Lat]));
                 }
 
                 function showExc3() {
-                    container.innerHTML = '<b><%= itinerary.excursion3.EXCURSION %></b>';
+                    container.innerHTML = '<b><%= itinerary.excursion3.excursion %></b>';
                     overlay1.setPosition(ol.proj.fromLonLat([exc3Long, exc3Lat]));
                 }
 
                 function showExc4() {
-                    container.innerHTML = '<b><%= itinerary.excursion4.EXCURSION %></b>';
+                    container.innerHTML = '<b><%= itinerary.excursion4.excursion %></b>';
                     overlay1.setPosition(ol.proj.fromLonLat([exc4Long, exc4Lat]));
                 }
 
                 function showExc5() {
-                    container.innerHTML = '<b><%= itinerary.excursion5.EXCURSION %></b>';
+                    container.innerHTML = '<b><%= itinerary.excursion5.excursion %></b>';
                     overlay1.setPosition(ol.proj.fromLonLat([exc5Long, exc5Lat]));
                 }
                 

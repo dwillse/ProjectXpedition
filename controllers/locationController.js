@@ -5,6 +5,7 @@ const itineraryModel = require('../models/itinerary');
 const prefs = new preferenceModel();
 
 const java = require('java');
+const { Console } = require('console');
 const exec = require('child_process').exec;
 
 
@@ -54,17 +55,22 @@ exports.itinerary = (req, res, next) => {
     console.log(user);
     console.log('java -jar public/java/xped/XpeditionGradleTest.jar' + ' ' + user + ' ' + stringPref);
 
-    exec('java -jar public/java/xped/XpeditionGradleTest.jar 6258847ba05969b6cc51708d beaches bar', function callback(err, stdout, stderr) {
+    exec('java -jar public/java/xped/XpeditionGradleTest.jar' + ' ' + user + ' ' + stringPref, function callback(err, stdout, stderr) {
         console.log(stdout);
+        console.log(stderr);
+        console.log('-------------');
+        console.log(err);
     });
 
-    Promise.all([userModel.findById(user), preferenceModel.find(), 
-        itineraryModel.findOne().populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5')])
-    .then(results => {
-        const [user, preference, itinerary] = results;
-        res.render('./location/results', {user, preference, itinerary})
-    })
-    .catch(err=>next(err));
+    setTimeout(() => {
+        Promise.all([userModel.findById(user), preferenceModel.find(), 
+            itineraryModel.findOne().populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5')])
+        .then(results => {
+            const [user, preference, itinerary] = results;
+            res.render('./location/results', {user, preference, itinerary})
+        })
+        .catch(err=>next(err));
+    }, 4000);
 };
 
 // redirects to details page and inserts info into page
