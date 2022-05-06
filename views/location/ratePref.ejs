@@ -7,7 +7,7 @@
         <h2 id ="test">
             You chose what you liked! Now tell us how much you like them!
         </h2>
-        <form action="/locations/results" method="POST">
+        <form action="/locations/results" method="POST" onchange="rateCheck()">
             <!--input type="checkbox" name="Country" value="0" checked="checked" style="display: none;"-->
 
         
@@ -156,7 +156,7 @@
         </div>
 
         <div class = "center">
-            <input type="submit" value="Next" id="button">
+            <input type="submit" value="Next" id="button" disabled>
         </div>
         
 

@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 //The database class will eventually pull information from SQL to make a list of excursions for the algorithm to work on

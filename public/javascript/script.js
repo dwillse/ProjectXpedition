@@ -192,6 +192,15 @@ function check() {
     }
 }
 
+function rateCheck() {
+    let radioBtn = document.querySelectorAll('input[type=radio]');
+
+    if(radioBtn.length != 0) {
+        document.getElementById("button").disabled = false;
+    } else {
+        document.getElementById("button").disabled = true;
+    }
+}
 
 function selectedPref() {
     const btn = document.querySelector('#btn');

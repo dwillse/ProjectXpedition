@@ -64,20 +64,13 @@ exports.itinerary = (req, res, next) => {
 
     setTimeout(() => {
         Promise.all([userModel.findById(user), preferenceModel.find(), 
-            itineraryModel.findOne({ userName: user }).populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5')])
+            itineraryModel.findOne({ userName: user }).populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5').sort({ _id: -1 })])
         .then(results => {
             const [user, preference, itinerary] = results;
             res.render('./location/results', {user, preference, itinerary})
         })
         .catch(err=>next(err));
     }, 4000);
-
-    setTimeout(() => {
-        preferenceModel.deleteMany({ userName: user }, function (err) {
-            if(err) console.log(err);
-            console.log("Successful deletion");
-        });
-    }, 20000);
 };
 
 // redirects to details page and inserts info into page

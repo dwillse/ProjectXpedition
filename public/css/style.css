@@ -447,16 +447,14 @@ input:nth-of-type(10):hover ~ i {--l:10}
     width: 35%;
     height: 80%;
     float: left;
-    margin-left: 100px;
 }
 
 #rightSide {
     border-style: none;
     border-radius: 25px;
     box-shadow: 5px 10px 20px #797979;
-    width: 35%;
+    width: 50%;
     float: right;
-    margin-right: 100px;
     min-height: 100px;
     overflow: hidden;
     margin-bottom: 125px;
@@ -466,8 +464,8 @@ input:nth-of-type(10):hover ~ i {--l:10}
     border-style: none;
     border-radius: 25px;
     box-shadow: 5px 10px 20px #797979;
-    width: 66%;
-    height: 300px;
+    width: 80%;
+    height: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
