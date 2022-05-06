@@ -34,8 +34,8 @@ window.onload = function hello() {
                 case 'restaurant': imageURL = '../images/rest.jpg'; break;
                 case 'tour': imageURL = '../images/tour.jpg'; break;
                 case 'spa': imageURL = '../images/spa.jpg'; break;
-                case 'beaches': imageURL = '../images/beach.jpg'; break;
-                case 'museums': imageURL = '../images/museum.jpg'; break;
+                case 'beach': imageURL = '../images/beach.jpg'; break;
+                case 'museum': imageURL = '../images/museum.jpg'; break;
                 case 'park': imageURL = '../images/park.jpg'; break;
                 case 'art': imageURL ='../images/art.jpg'; break;
                 default: break;
