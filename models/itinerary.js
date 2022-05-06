@@ -14,4 +14,4 @@ const itinerarySchema = new Schema( {
 );
 
 //collection name is connections in the database
-module.exports = mongoose.model('Itinerary', itinerarySchema);
+module.exports = mongoose.model('itinerary', itinerarySchema);

@@ -608,4 +608,34 @@ ul {
 .schedules {
     text-align: center;
     list-style-position: inside;
+    padding: 1% 5% 5% 5%;
+   
+
+}
+
+.schedules li{
+    text-align: left;
+    list-style-type: circle;
+    margin-left: 40%;
+}
+
+.schedules a{
+    box-shadow: inset 0 0 0 0 grey;
+  color: black;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .7s ease-in-out;
+  text-decoration: none;
+  font-size: larger;
+ 
+}
+
+.schedules a:hover {
+    box-shadow: inset 400px 0 0 0 orange;
+  color: black;
+}
+
+.schedules h2 {
+    text-align: left;
+    margin-left: 42%;
 }

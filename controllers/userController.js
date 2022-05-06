@@ -1,4 +1,5 @@
 const model = require('../models/user');
+const itineraryModel = require('../models/itinerary');
 
 exports.new = (req, res)=>{
     return res.render('./user/create');
@@ -53,10 +54,10 @@ exports.login = (req, res, next)=>{
 
 exports.profile = (req, res, next)=>{
     let id = req.session.user;
-    Promise.all([model.findById(id)]) 
+    Promise.all([itineraryModel.find({ userName: id }).populate('excursion1').populate('excursion2').populate('excursion3').populate('excursion4').populate('excursion5'), model.findById(id)]) 
     .then(results=> {
-        const [user] = results;
-        res.render('./user/profile', {user});
+        const [itinerary, user] = results;
+        res.render('./user/profile', {itinerary, user});
     })
     .catch(err=>next(err));
 };
