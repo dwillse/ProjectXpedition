@@ -4,18 +4,19 @@
     <p class="profileTxt">Hello and thank you for registering for an account with us here at Xpedition, we want to make planning a vacation fun occasion not a stressful one.</p>
     <p class="profileTxt">Below are some of the iteneraries you have created.</p>
     <ul class="schedules">
-    <div id="pleasefortheloveofgodwork">
-    <% let num = 1; %>
-    <% if(itinerary) { %>
-    <% itinerary.forEach(itinerary=> { %>
-    <h2>Itinerary #<%= num%></h2>
-    <li><a href="<%= itinerary.excursion1.website%>"><%= itinerary.excursion1.excursion%></a></li>
-    <li><a href="<%= itinerary.excursion2.website%>"><%= itinerary.excursion2.excursion%></a></li>
-    <li><a href="<%= itinerary.excursion3.website%>"><%= itinerary.excursion3.excursion%></a></li>
-    <li><a href="<%= itinerary.excursion4.website%>"><%= itinerary.excursion4.excursion%></a></li>
-    <li><a href="<%= itinerary.excursion4.website%>"><%= itinerary.excursion5.excursion%></a></li>
-    <% num = num+1});  }%>
-    </div>
+        <div id="pleasefortheloveofgodwork">
+            <% let num = 1; %>
+            <% if(itinerary) { %>
+                <% itinerary.forEach(itinerary=> { %>
+                    <h2>Itinerary #<%= num%></h2>
+                    <li><a href="<%= itinerary.excursion1.website%>"><%= itinerary.excursion1.excursion%></a></li>
+                    <li><a href="<%= itinerary.excursion2.website%>"><%= itinerary.excursion2.excursion%></a></li>
+                    <li><a href="<%= itinerary.excursion3.website%>"><%= itinerary.excursion3.excursion%></a></li>
+                    <li><a href="<%= itinerary.excursion4.website%>"><%= itinerary.excursion4.excursion%></a></li>
+                    <li><a href="<%= itinerary.excursion4.website%>"><%= itinerary.excursion5.excursion%></a></li>
+                <% num = num+1});  
+            }%>
+        </div>
     </ul>
-    </div>
+</div>
     <%- include('../partials/footer.ejs')%>

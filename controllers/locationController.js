@@ -72,16 +72,3 @@ exports.itinerary = (req, res, next) => {
         .catch(err=>next(err));
     }, 4000);
 };
-
-// redirects to details page and inserts info into page
-exports.details = (req, res, next)=> {
-    let id = req.params.id;
-    let Excursion = model.findById(id)
-    if(Excursion) {
-        res.render('./location/details', {Excursion});
-    } else {
-    let err = new Error('Cannot find that location' + id);
-        err.status = 404;
-        next(err);
-    }
-};

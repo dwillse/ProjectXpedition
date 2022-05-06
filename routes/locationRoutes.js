@@ -18,8 +18,6 @@ router.post('/results', controller.itinerary);
 //handles the results page
 router.get('/results', isLoggedIn, controller.results);
 
-//Handles the details page
-router.get('/locations/:id', isLoggedIn, controller.details);
 
 
 module.exports = router;
